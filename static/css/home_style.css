@@ -1,0 +1,86 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+/* Navbar Principal */
+.navbar-principal {
+    background-color: #ffffff;
+    color: rgb(0, 184, 255);
+    padding: 15px;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+.navbar-logo {
+    margin-left: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-logo img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.navbar-logo h1 {
+    font-size: 40px;
+    margin: 0;
+}
+
+.navbar-enlaces {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-enlaces a {
+    text-decoration: none;
+    margin-left: 20px;
+    margin-right: 48px;
+    font-weight: bold;
+    font-size: 24px;
+    color: black;
+    padding: 5px 10px;
+    transition: box-shadow 0.3s ease;
+    border-radius: 20px;
+}
+
+.navbar-enlaces a:hover{
+    box-shadow: 0px 4px 10px rgb(0, 184, 255);
+}
+
+/* Navbar Secundario */
+.navbar-secundario {
+    background-color: rgb(85, 207, 255);
+    border-radius: 20px;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    border-bottom: 2px solid #ccc;
+}
+.navbar-secundario a {
+    color: white;
+    font-size: 21px;
+    text-decoration: none;
+    margin: 0 40px;
+    font-weight: bold;
+}
+.navbar-secundario input{
+    border-radius: 20px;
+    border: 2px solid rgb(113, 209, 247);
+    outline: none;
+    width: 290px;
+    height: 20px;
+}
+
+.navbar-secundario input:focus{
+    border: 2px solid black; /* Borde azul cuando el input está enfocado */
+}
+
+/* Contenido Principal */
+.contenido {
+    padding: 20px;
+    text-align: center;
+}
