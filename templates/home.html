@@ -12,35 +12,66 @@
         }
         /* Navbar Principal */
         .navbar-principal {
-            background-color: #007bff;
-            color: white;
+            background-color: #ffffff;
+            color: rgb(0, 184, 255);
             padding: 15px;
             display: flex;
-            justify-content: space-between;
+            justify-content: space-between; 
+            align-items: center; 
+        }
+
+        .navbar-logo {
+            margin-left: 30px;
+            display: flex;
             align-items: center;
         }
-        .navbar-principal a {
-            color: white;
+
+        .navbar-logo img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .navbar-logo h1 {
+            font-size: 40px;
+            margin: 0;
+        }
+
+        .navbar-enlaces {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-enlaces a {
             text-decoration: none;
-            margin: 0 15px;
+            margin-left: 20px;
+            margin-right: 48px;
             font-weight: bold;
             font-size: 24px;
+            color: black;
+            padding: 5px 10px;
+            transition: box-shadow 0.3s ease;
+            border-radius: 20px;
         }
-        .navbar-principal h1{
-            font-size: 40px;
+
+        .navbar-enlaces a:hover{
+            box-shadow: 0px 4px 10px rgb(0, 184, 255);
         }
+
         /* Navbar Secundario */
         .navbar-secundario {
-            background-color: #f0f0f0;
-            padding: 10px;
+            background-color: rgb(85, 207, 255);
+            border-radius: 20px;
+            padding: 15px;
             display: flex;
             justify-content: center;
             border-bottom: 2px solid #ccc;
         }
         .navbar-secundario a {
-            color: #007bff;
+            color: white;
+            font-size: 21px;
             text-decoration: none;
-            margin: 0 10px;
+            margin: 0 40px;
             font-weight: bold;
         }
 
@@ -52,10 +83,12 @@
     </style>
 </head>
 <body>
-
     <nav class="navbar-principal">
-        <h1>DepoHunter</h1>
-        <div>
+        <div class="navbar-logo">
+            <img src="../src/media/logo.png" alt="logo de DepoHunter">
+            <h1>DepoHunter</h1>
+        </div>
+        <div class="navbar-enlaces">
             <a href="#">Iniciar Sesión</a>
             <a href="#">Registro</a>
         </div>
@@ -63,7 +96,7 @@
 
     <!-- Navbar Secundario -->
     <nav class="navbar-secundario">
-        <a href="#">Explorar</a>
+        <input type="text" placeholder="Buscar..." class="search-box">
         <a href="#">Fecha Entrada</a>
         <a href="#">Fecha Salida</a>
     </nav>
