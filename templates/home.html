@@ -4,14 +4,88 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DepoHunter</title>
-    <link rel="stylesheet" href="../static/css/home_style.css">
-    <!-- Flatpickr CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        /* Navbar Principal */
+        .navbar-principal {
+            background-color: #ffffff;
+            color: rgb(0, 184, 255);
+            padding: 15px;
+            display: flex;
+            justify-content: space-between; 
+            align-items: center; 
+        }
+
+        .navbar-logo {
+            margin-left: 30px;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-logo img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .navbar-logo h1 {
+            font-size: 40px;
+            margin: 0;
+        }
+
+        .navbar-enlaces {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-enlaces a {
+            text-decoration: none;
+            margin-left: 20px;
+            margin-right: 48px;
+            font-weight: bold;
+            font-size: 24px;
+            color: black;
+            padding: 5px 10px;
+            transition: box-shadow 0.3s ease;
+            border-radius: 20px;
+        }
+
+        .navbar-enlaces a:hover{
+            box-shadow: 0px 4px 10px rgb(0, 184, 255);
+        }
+
+        /* Navbar Secundario */
+        .navbar-secundario {
+            background-color: rgb(85, 207, 255);
+            border-radius: 20px;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            border-bottom: 2px solid #ccc;
+        }
+        .navbar-secundario a {
+            color: white;
+            font-size: 21px;
+            text-decoration: none;
+            margin: 0 40px;
+            font-weight: bold;
+        }
+
+        /* Contenido Principal */
+        .contenido {
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar-principal">
         <div class="navbar-logo">
-            <img src="../static/images/logo.png" alt="logo de DepoHunter">
+            <img src="../src/media/logo.png" alt="logo de DepoHunter">
             <h1>DepoHunter</h1>
         </div>
         <div class="navbar-enlaces">
@@ -23,10 +97,8 @@
     <!-- Navbar Secundario -->
     <nav class="navbar-secundario">
         <input type="text" placeholder="Buscar..." class="search-box">
-
-        <input type="text" id="datepicker" placeholder="Selecciona las fechas...">
-        <div id="resultado"></div>
-
+        <a href="#">Fecha Entrada</a>
+        <a href="#">Fecha Salida</a>
     </nav>
 
     <!-- Contenido Principal -->
@@ -35,7 +107,5 @@
         <p>Aquí encontrarás la mejor experiencia de alojamiento.</p>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script> 
-    <script src="../static/js/home_js.js"></script>
 </body>
 </html>
