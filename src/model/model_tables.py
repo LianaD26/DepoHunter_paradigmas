@@ -1,14 +1,15 @@
 class Lodging: #alojamiento
     def __init__(self,name
                 ,city,latitude,
-                length,price,
+                longitude,price,
                 type,capacity,
                 rooms_number,bathrooms_number,
                 bedrooms_number,id_host):
+        self.id=id
         self.name=name
         self.city=name
         self.latitude=latitude
-        self.length=length
+        self.longitude=longitude
         self.price=price
         self.type=type
         self.capacity=capacity
@@ -20,7 +21,7 @@ class Lodging: #alojamiento
 
 
 
-class user:
+class user: #usuario
     def __init__(self,name,password):
         self.name=name
         self.password=password
