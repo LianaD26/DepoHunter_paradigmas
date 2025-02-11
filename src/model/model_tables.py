@@ -1,7 +1,7 @@
 from datetime import datetime
 
 
-class Lodging: #alojamiento
+class Lodging:
     def __init__(self, id, name
                 ,city,latitude,
                 longitude,price,
