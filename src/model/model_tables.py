@@ -1,3 +1,6 @@
+from datetime import datetime
+
+
 class Lodging: #alojamiento
     def __init__(self, id, name
                 ,city,latitude,
@@ -38,8 +41,8 @@ class Reservation:
         
         self.id_reservation=id_reservation
         self.id_lodging=id_lodging
-        self.initial_date=initial_date
-        self.end_date=end_date
+        self.initial_date= datetime.strptime(initial_date, '%Y-%m-%d')
+        self.end_date= datetime.strptime(end_date, '%Y-%m-%d')
         return
     
     def get_availability(self, start_date, end_date):
