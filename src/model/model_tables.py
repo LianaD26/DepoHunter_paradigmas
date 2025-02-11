@@ -4,7 +4,7 @@ from datetime import datetime
 class Lodging:
     def __init__(self, id, name, city, latitude, longitude, price,
                  type, capacity, rooms_number, bathrooms_number,
-                 bedrooms_number, id_host):
+                 bedrooms_number, id_host, feedback, rating):
         self.id = id
         self.name = name
         self.city = city
@@ -17,6 +17,8 @@ class Lodging:
         self.bathrooms_number = bathrooms_number
         self.bedrooms_number = bedrooms_number
         self.id_host = id_host
+        self.feedback = feedback
+        self.rating = rating
         self.reservations = []
 
     def add_reservation(self, reservation):
@@ -51,6 +53,7 @@ class User: #usuario
             if not reservation.get_availability(start_date, end_date):
                 return False
         return True
+
 
 class Reservation:
     def __init__(self, id_reservation, id_lodging, initial_date, end_date):
