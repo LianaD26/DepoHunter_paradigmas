@@ -4,7 +4,7 @@ from datetime import datetime
 class Lodging:
     def __init__(self, id, name, city, latitude, longitude, price,
                  type, capacity, rooms_number, bathrooms_number,
-                 bedrooms_number, id_host, feedback, rating):
+                 bedrooms_number, id_host):
         self.id = id
         self.name = name
         self.city = city
@@ -17,9 +17,6 @@ class Lodging:
         self.bathrooms_number = bathrooms_number
         self.bedrooms_number = bedrooms_number
         self.id_host = id_host
-        self.feedback = feedback
-        self.rating = rating
-        self.reservations = []
 
     def add_reservation(self, reservation):
         if self.check_availability(reservation.initial_date, reservation.end_date):
@@ -92,6 +89,15 @@ class Payment:
         print(f"Procesing payment {self.amount} with {self.payment_method}...")
         self.status = True
         print("Succesfull payment")
+
+class Review:
+    def __init__(self, id_review, user, lodging, rating, comment):
+        self.id_review = id_review
+        self.user = user
+        self.lodging = lodging
+        self.rating = rating
+        self.comment = comment
+
     
 
 
