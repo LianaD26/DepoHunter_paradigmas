@@ -1,41 +1,19 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DepoHunter</title>
-    <link rel="stylesheet" href="../static/css/home_style.css">
-    <!-- Flatpickr CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-</head>
-<body>
-    <nav class="navbar-principal">
-        <div class="navbar-logo">
-            <img src="../static/images/logo.png" alt="logo de DepoHunter">
-            <h1>DepoHunter</h1>
-        </div>
-        <div class="navbar-enlaces">
-            <a href="#">Iniciar Sesión</a>
-            <a href="#">Registro</a>
-        </div>
-    </nav>
+{% extends "base.html" %}
 
-    <!-- Navbar Secundario -->
-    <nav class="navbar-secundario">
-        <input type="text" placeholder="Buscar..." class="search-box">
-
-        <input type="text" id="datepicker" placeholder="Selecciona las fechas...">
-        <div id="resultado"></div>
-
-    </nav>
-
-    <!-- Contenido Principal -->
-    <div class="contenido">
-        <h1>Alojamientos</h1>
-        <p>Aquí encontrarás la mejor experiencia de alojamiento.</p>
+{% block content %}
+    <h1>Alojamientos</h1>
+    <p>Aquí encontrarás la mejor experiencia de alojamiento.</p>
+    <h3>Alojamientos Disponibles</h3>
+    
+    <div class="alojamientos-grid">
+        {% for alojamiento in alojamientos %}
+            <div class="alojamiento-card">
+                <a href="{{ url_for('view_user.alojamiento_detalle', id=alojamiento.id) }}">
+                    <img src="{{ alojamiento.imagen }}" alt="{{ alojamiento.nombre }}">
+                    <h3>{{ alojamiento.nombre }}</h3>
+                    <p>Precio: ${{ alojamiento.precio }} por noche</p>
+                </a>
+            </div>
+        {% endfor %}
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script> 
-    <script src="../static/js/home_js.js"></script>
-</body>
-</html>
+{% endblock %}
