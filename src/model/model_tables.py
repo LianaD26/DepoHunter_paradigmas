@@ -7,7 +7,7 @@ class Lodging: #alojamiento
                 bedrooms_number,id_host):
         self.id=id
         self.name=name
-        self.city=name
+        self.city=city
         self.latitude=latitude
         self.longitude=longitude
         self.price=price
@@ -17,7 +17,6 @@ class Lodging: #alojamiento
         self.bathrooms_number=bathrooms_number
         self.bedrooms_number=bedrooms_number
         self.id_host=id_host
-    return 
 
 
 
@@ -25,7 +24,7 @@ class user: #usuario
     def __init__(self,name,password):
         self.name=name
         self.password=password
-    return 
+    
 
 
 class reservation:
@@ -36,7 +35,7 @@ class reservation:
         self.id_lodging=id_lodging
         self.initial_date=initial_date
         self.end_date=end_date
-    return
+    
 
 
 class image:
@@ -44,9 +43,27 @@ class image:
         self.id_image=id_image
         self.lodging=lodging
         self.address=address
-    return
+    
 
 class host:
     def __init__(self,host):
         self.host=host
+
+
+class resultsearch:  
+    def __init__(self,name,city,latitude,longitude,
+                price,type,capacity,rooms_number,bathrooms_number,bedrooms_number,initial_date,end_date):
+        self.name=name
+        self.city=city
+        self.latitude=latitude
+        self.longitude=longitude
+        self.price=price
+        self.type=type
+        self.capacity=capacity
+        self.rooms_number=rooms_number
+        self.bathrooms_number=bathrooms_number
+        self.bedrooms_number=bedrooms_number
+        self.initial_date=initial_date
+        self.end_date=end_date
+    
         
