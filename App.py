@@ -1,5 +1,4 @@
 from flask import Flask 
-  
 
 # Para poder servir plantillas HTML desde archivos, es necesario importar el modulo render_template
 # from flask import render_template
