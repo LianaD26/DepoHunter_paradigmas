@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>{{ alojamiento.nombre }}</h1>
+    <img src="{{ alojamiento.imagen }}" alt="{{ alojamiento.nombre }}" style="width:500px; height:auto;">
+    <p>Precio: {{ alojamiento.precio }} COP</p>
+    <a href="{{ url_for('view_user.home') }}">Volver a la lista</a>
+
+{% endblock %}
