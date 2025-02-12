@@ -1,6 +1,82 @@
 name,city,latitude,longitude,price,type,capacity,rooms_number,bathrooms_number,bedrooms_number,id_host
-Casa Bella,Madrid,40.4168N,3.7038W,150,Casa,4,3,2,2,101
-Sunset Lodge,Barcelona,41.3879N,2.1699E,200,Apartamento,6,4,3,3,102
-Mountain Retreat,Zaragoza,41.6488N,0.8891W,120,Casa,5,3,2,2,103
-Urban Loft,Valencia,39.4699N,0.3763W,250,Apartamento,3,2,1,1,104
-Beach House,Málaga,36.7213N,4.4214W,300,Casa,8,5,4,4,105
+
+data = {
+    "name": [
+        "Apartamento Moderno", "Casa Colonial", "Cabaña Rústica", "Loft Lujoso", "Villa Marítima",
+        "Casa Campestre", "Penthouse Exclusivo", "Refugio en la Montaña", "EcoLodge Selva", "Hacienda Tradicional",
+        "Bungalow Azul", "Casa del Lago", "Estudio Urbano", "Cabaña del Bosque", "Hotel Boutique",
+        "Hostal Bohemio", "Chalet Alpino", "Casa del Sol", "Apartamento Ejecutivo", "Finca Cafetera",
+        "Villa Romántica", "Cabaña del Río", "Resort de Lujo", "Casa Mirador", "Glamping Estelar"
+    ],
+    "city": [
+        "Bogotá", "Cartagena", "Armenia", "Medellín", "Santa Marta",
+        "Villavicencio", "Cali", "Manizales", "Leticia", "Pereira",
+        "San Andrés", "Guatapé", "Bucaramanga", "Popayán", "Barranquilla",
+        "Santa Marta", "Tunja", "Neiva", "Pasto", "Armenia",
+        "Cúcuta", "Ibagué", "Montería", "Manizales", "Boyacá"
+    ],
+    "latitude": [
+        "4.7110N", "10.3910N", "4.5339N", "6.2442N", "11.2408N",
+        "4.1421N", "3.4516N", "5.0689N", "4.2150S", "4.8087N",
+        "12.5833N", "6.2322N", "7.1193N", "2.4448N", "10.9639N",
+        "11.2420N", "5.5353N", "2.9273N", "1.2136N", "4.5331N",
+        "7.8945N", "4.4389N", "8.7485N", "5.0596N", "5.4009N"
+    ],
+    "longitude": [
+        "74.0721W", "75.4794W", "75.6811W", "75.5812W", "74.1990W",
+        "73.6371W", "76.5320W", "75.5174W", "69.9406W", "75.6909W",
+        "81.7006W", "75.1652W", "73.1227W", "76.6147W", "74.7964W",
+        "74.2100W", "73.3610W", "75.2818W", "77.2858W", "75.6715W",
+        "72.5078W", "75.2321W", "75.8854W", "75.5809W", "72.9198W"
+    ],
+    "price": [
+        120, 250, 90, 180, 300,
+        140, 275, 100, 85, 230,
+        320, 210, 150, 110, 400,
+        95, 170, 160, 200, 220,
+        130, 190, 350, 280, 140
+    ],
+    "type": [
+        "Apartamento", "Casa", "Cabaña", "Loft", "Villa",
+        "Casa", "Penthouse", "Cabaña", "EcoLodge", "Hacienda",
+        "Bungalow", "Casa", "Estudio", "Cabaña", "Hotel",
+        "Hostal", "Chalet", "Casa", "Apartamento", "Finca",
+        "Villa", "Cabaña", "Resort", "Casa", "Glamping"
+    ],
+    "capacity": [
+        4, 8, 6, 2, 10,
+        6, 5, 4, 3, 12,
+        7, 9, 2, 5, 15,
+        10, 6, 5, 3, 12,
+        8, 7, 20, 6, 4
+    ],
+    "rooms_number": [
+        2, 4, 3, 1, 5,
+        3, 4, 2, 2, 6,
+        3, 5, 1, 2, 8,
+        5, 3, 3, 2, 5,
+        4, 3, 10, 3, 2
+    ],
+    "bathrooms_number": [
+        2, 3, 2, 1, 4,
+        2, 3, 1, 1, 4,
+        2, 3, 1, 1, 5,
+        3, 2, 2, 1, 3,
+        2, 2, 8, 2, 1
+    ],
+    "bedrooms_number": [
+        2, 4, 3, 1, 5,
+        3, 4, 2, 2, 6,
+        3, 5, 1, 2, 8,
+        4, 3, 3, 2, 5,
+        4, 3, 9, 3, 2
+    ],
+    "id_host": [
+        201, 202, 203, 204, 205,
+        206, 207, 208, 209, 210,
+        211, 212, 213, 214, 215,
+        216, 217, 218, 219, 220,
+        221, 222, 223, 224, 225
+    ]
+}
+
