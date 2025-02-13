@@ -16,7 +16,7 @@ class Controllerhost:
     
     def CreateTableHost(self):
         query="""CREATE TABLE IF NOT EXISTS host(
-                host_name int not null,
+                host_name varchar(50) not null,
                 id_lodging int not null
         );
         """
@@ -30,4 +30,4 @@ class Controllerhost:
 
 #ejemplofun=Controllerhost()
 #ejemplofun.CreateTableHost()
-#ejemplofun.PostDataHost(data="DepoHunter_paradigmas/src/utils/df_lodging.csv")
+#ejemplofun.PostDataHost(data="DepoHunter_paradigmas/src/utils/host_data.csv")
