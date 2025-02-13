@@ -23,11 +23,11 @@ data = {
         130, 190, 350, 280, 140
     ],
     "type": [
-        "Apartamento", "Casa", "Cabaña", "Loft", "Villa",
-        "Casa", "Penthouse", "Cabaña", "EcoLodge", "Hacienda",
-        "Bungalow", "Casa", "Estudio", "Cabaña", "Hotel",
-        "Hostal", "Chalet", "Casa", "Apartamento", "Finca",
-        "Villa", "Cabaña", "Resort", "Casa", "Glamping"
+        "Apartamento", "Casa", "Casa", "Casa", "Apartamento",
+        "Casa de huéspedes", "Apartamento", "Cabaña", "Cabaña", "Casa",
+        "Casa de huéspedes", "Casa de huéspedes", "Casa", "Casa de huéspedes", "Casa de huéspedes",
+        "Apartamento", "Apartamento", "Casa", "Apartamento", "Casa de huéspedes",
+        "Casa de huéspedes", "Casa", "Apartamento", "Casa", "Apartamento"
     ],
     "capacity": [
         4, 8, 6, 2, 10,
