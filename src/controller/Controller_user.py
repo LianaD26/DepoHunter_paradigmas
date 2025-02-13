@@ -9,9 +9,7 @@ import config.SecretConfig as secretconfig
 import model.model_tables as models
 import controller.Base_Controller as B_Controller
 import controller.Controller_Result as contro_result
-#achu
-#import model.models_table as models
-#achu
+
 
 class ControllerUser:
     def __init__(self):

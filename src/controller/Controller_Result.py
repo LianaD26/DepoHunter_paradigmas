@@ -28,7 +28,7 @@ class ControllerResult():
         return search
     
     def filterdefault(self):
-        query = """select  l.name,l.city, l.price,
+        query = """select  l.id ,l.name,l.city, l.price,
                 l.type, l.capacity, l.rooms_number
                 ,l.bathrooms_number, l.bedrooms_number,
                 h.host_name,i.addressone,i.addresstwo,i.addresstree
@@ -41,7 +41,7 @@ class ControllerResult():
     
     def FilterCityDate(self, city, initial_date, end_date):
         query = f"""SELECT 
-                    l.name, l.city, l.price,
+                    l.id,l.name, l.city, l.price,
                     l.type, l.capacity, l.rooms_number,
                     l.bathrooms_number, l.bedrooms_number,
                     h.host_name, i.addressone, i.addresstwo, i.addresstree
@@ -54,7 +54,7 @@ class ControllerResult():
         return self._execute_query(query)
     
     def Filterprice(self, price):
-        query = f""" select  l.name,l.city, l.price,
+        query = f""" select  l.id,l.name,l.city, l.price,
                     l.type, l.capacity, l.rooms_number
                     ,l.bathrooms_number, l.bedrooms_number,
                     h.host_name,i.addressone,i.addresstwo,i.addresstree
@@ -67,7 +67,7 @@ class ControllerResult():
     
     def filtertype(self, type):
         query = f""" 
-            select  l.name,l.city, l.price,
+            select  l.id, l.name,l.city, l.price,
                     l.type, l.capacity, l.rooms_number
                     ,l.bathrooms_number, l.bedrooms_number,
                     h.host_name,i.addressone,i.addresstwo,i.addresstree
@@ -79,8 +79,15 @@ class ControllerResult():
         return self._execute_query(query)
     
     def filterUser(self, name):
-        query = f""" SELECT * FROM users WHERE name = '{name}'"""
+        query = f""" SELECT * FROM users 
+                    WHERE name = '{name}'"""
         return self._execute_query(query, fetch_method="fetchone")
+
+    def filter_Review(self,id_lodging):
+        query = f""" SELECT * FROM  review 
+                    WHERE id_lodging = '{id_lodging}'"""
+        return self._execute_query(query)
+
 
 
 # Ejemplo de uso
@@ -89,3 +96,4 @@ class ControllerResult():
 #print(elementobusqueda.FilterCityDate(city="Madrid", initial_date="2025-12-02", end_date="2025-12-02"))
 #print(elementobusqueda.Filterprice(price=150))
 #print(elementobusqueda.filtertype(type="Casa"))
+#print(elementobusqueda.filter_Review(id_lodging=2))

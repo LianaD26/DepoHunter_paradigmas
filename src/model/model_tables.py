@@ -65,9 +65,9 @@ class Payment:
         self.status = False
 
 class Review:
-    def __init__(self, id_review, user, lodging, rating, comment):
+    def __init__(self, id_review, user_name ,id_lodging, rating, comment):
         self.id_review = id_review
-        self.user = user
-        self.lodging = lodging
+        self.user_name  = user_name 
+        self.id_lodging = id_lodging
         self.rating = rating
         self.comment = comment

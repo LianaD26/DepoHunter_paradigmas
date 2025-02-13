@@ -1,0 +1,51 @@
+id_review,user,id_lodging,rating,comment
+1,user_12,2,2,Very clean and cozy
+2,user_6,25,3,Average experience
+3,user_8,25,3,Amazing experience
+4,user_17,13,1,Highly recommend
+5,user_6,25,2,Could be better
+6,user_13,23,4,Will come back
+7,user_3,0,4,Nice location
+8,user_5,3,2,Loved it!
+9,user_2,3,2,Worth the price
+10,user_15,10,4,Decent stay
+11,user_6,5,2,Worth the price
+12,user_17,14,1,Staff was rude
+13,user_10,18,3,Could be better
+14,user_6,9,1,Best place ever
+15,user_17,22,2,Worth the price
+16,user_8,10,1,Very clean and cozy
+17,user_2,6,3,Not bad
+18,user_3,4,2,Worth the price
+19,user_2,13,1,Loved it!
+20,user_18,3,3,Will come back
+21,user_5,0,1,Staff was rude
+22,user_9,2,2,Highly recommend
+23,user_11,24,1,Too noisy
+24,user_6,14,1,Loved it!
+25,user_15,10,2,Fantastic service
+26,user_10,3,1,Worst experience
+27,user_7,6,4,Decent stay
+28,user_3,10,4,Decent stay
+29,user_1,8,3,Disappointing
+30,user_19,7,5,Not bad
+31,user_12,13,1,Could be better
+32,user_15,24,4,Worth the price
+33,user_11,23,3,Not bad
+34,user_14,19,3,Staff was rude
+35,user_1,15,4,Highly recommend
+36,user_4,12,3,Amazing experience
+37,user_6,23,1,Worst experience
+38,user_17,22,1,Nice location
+39,user_8,24,2,Could be better
+40,user_11,10,5,Nice location
+41,user_13,2,5,Overpriced
+42,user_6,11,2,Worth the price
+43,user_6,6,4,Worth the price
+44,user_19,4,4,Average experience
+45,user_16,3,3,Best place ever
+46,user_6,21,3,Highly recommend
+47,user_7,0,1,Will come back
+48,user_7,5,3,Would not recommend
+49,user_14,24,5,Average experience
+50,user_6,7,5,Worst experience
