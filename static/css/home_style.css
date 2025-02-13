@@ -318,7 +318,7 @@ input, select {
     color: red;
     font-weight: bold;
 }
-.comentarios {
+.comentarios, .comunicacion-host{
     margin-top: 40px;
     padding: 20px;
     background: #f9f9f9;
@@ -326,29 +326,41 @@ input, select {
     margin-left: 40px;
     margin-right: 40px;
 }
-.comentarios textarea {
+.location{
+    padding: 20px;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+.comentarios textarea, .comunicacion-host textarea {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
 }
-.comentarios button {
+.comentarios button, .comunicacion-host button, .btn-login-user, .btn-register-user {
     padding: 10px 15px;
     background: #007bff;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 15px;
 }
 .comentarios button:disabled {
     background: gray;
     cursor: not-allowed;
 }
 
-.comentario {
+.comentario{
     margin-top: 10px;
     padding: 10px;
     border-bottom: 1px solid #ddd;
+    float: left;
+}
+/*Botón de publicar los comentarios*/
+.btn-publicar, .btn-enviar-host{
+    float: left;
 }
 
+/*Login*/

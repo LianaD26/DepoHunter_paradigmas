@@ -76,3 +76,33 @@ function publicarComentario() {
     document.getElementById("lista-comentarios").appendChild(nuevoComentario);
     document.getElementById("comentario-texto").value = "";
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+    var ubicacion = document.getElementById("ubicacion-texto").innerText; // Obtiene el nombre de la ciudad
+
+    // API de OpenStreetMap para obtener coordenadas a partir de un nombre de ciudad
+    var url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(ubicacion)}`;
+
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            if (data.length > 0) {
+                var lat = data[0].lat;
+                var lon = data[0].lon;
+
+                // Inicializa el mapa con las coordenadas obtenidas
+                var map = L.map('mapa').setView([lat, lon], 12);
+
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '&copy; OpenStreetMap contributors'
+                }).addTo(map);
+
+                L.marker([lat, lon]).addTo(map)
+                    .bindPopup(`Ubicación: ${ubicacion}`)
+                    .openPopup();
+            } else {
+                console.error("No se encontraron coordenadas para la ubicación proporcionada.");
+            }
+        })
+        .catch(error => console.error("Error al obtener coordenadas:", error));
+});

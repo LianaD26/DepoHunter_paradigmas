@@ -3,9 +3,9 @@ from flask import Blueprint, render_template
 blueprint = Blueprint( "view_user", __name__, template_folder="templates" )
 
 alojamientos = [
-   {"id": 100, "nombre": "Alojamiento1", "precio": 123000, "imagen1": "https://www.revistaaxxis.com.co/wp-content/uploads/2022/08/casa_cinco_9.jpg", "imagen2":"https://arquitectopablorestrepo.com/wp-content/uploads/2024/01/Casa-Moderna-Costa-Azul-6.jpg", "imagen3" : "https://revistaaxxis.com.co/wp-content/uploads/2019/09/llano-axxis1.jpg"},
-   {"id": 101, "nombre": "Alojamiento2", "precio": 150000, "imagen1": "https://www.revistaaxxis.com.co/wp-content/uploads/2022/08/casa_cinco_9.jpg", "imagen2":"https://arquitectopablorestrepo.com/wp-content/uploads/2024/01/Casa-Moderna-Costa-Azul-6.jpg", "imagen3" : "https://revistaaxxis.com.co/wp-content/uploads/2019/09/llano-axxis1.jpg"},
-   {"id": 102, "nombre": "Alojamiento3", "precio": 95000, "imagen1": "https://www.revistaaxxis.com.co/wp-content/uploads/2022/08/casa_cinco_9.jpg", "imagen2":"https://arquitectopablorestrepo.com/wp-content/uploads/2024/01/Casa-Moderna-Costa-Azul-6.jpg", "imagen3" : "https://revistaaxxis.com.co/wp-content/uploads/2019/09/llano-axxis1.jpg"}
+   {"id": 100, "nombre": "Alojamiento1", "precio": 123000, "imagen1": "https://www.revistaaxxis.com.co/wp-content/uploads/2022/08/casa_cinco_9.jpg", "imagen2":"https://arquitectopablorestrepo.com/wp-content/uploads/2024/01/Casa-Moderna-Costa-Azul-6.jpg", "imagen3" : "https://revistaaxxis.com.co/wp-content/uploads/2019/09/llano-axxis1.jpg", "ubicacion":"Guarne Antioquia"},
+   {"id": 101, "nombre": "Alojamiento2", "precio": 150000, "imagen1": "https://www.revistaaxxis.com.co/wp-content/uploads/2022/08/casa_cinco_9.jpg", "imagen2":"https://arquitectopablorestrepo.com/wp-content/uploads/2024/01/Casa-Moderna-Costa-Azul-6.jpg", "imagen3" : "https://revistaaxxis.com.co/wp-content/uploads/2019/09/llano-axxis1.jpg", "ubicacion":"Cartagena Bolivar"},
+   {"id": 102, "nombre": "Alojamiento3", "precio": 95000, "imagen1": "https://www.revistaaxxis.com.co/wp-content/uploads/2022/08/casa_cinco_9.jpg", "imagen2":"https://arquitectopablorestrepo.com/wp-content/uploads/2024/01/Casa-Moderna-Costa-Azul-6.jpg", "imagen3" : "https://revistaaxxis.com.co/wp-content/uploads/2019/09/llano-axxis1.jpg", "ubicacion":"Bogota Colombia"}
 ]
 
 @blueprint.route("/")
@@ -23,10 +23,10 @@ def alojamiento_detalle(id):
 def pago():
     return render_template('pago.html')
 
-@blueprint.route("/Login")
-def Login():
+@blueprint.route("/login")
+def login():
    return render_template("login.html")
 
-@blueprint.route("/Register")
-def Register():
+@blueprint.route("/register")
+def register():
    return render_template("register.html")

@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/home_style.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 
 </head>
 <body>
@@ -17,8 +18,8 @@
             <h1><a href="{{ url_for('view_user.home') }}">DepoHunter</a></h1>
         </div>
         <div class="navbar-enlaces">
-            <a href="#">Iniciar Sesión</a>
-            <a href="#">Registro</a>
+            <a href="{{ url_for('view_user.login') }}">Iniciar Sesión</a>
+            <a href="{{ url_for('view_user.register') }}">Registro</a>
         </div>
     </nav>
 
@@ -37,5 +38,6 @@
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script> 
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script src="{{ url_for('static', filename='js/home_js.js') }}"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 </body>
 </html>

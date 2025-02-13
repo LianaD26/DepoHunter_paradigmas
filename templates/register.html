@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container">
+        <h2>Crear Cuenta</h2>
+        <form action="/register" method="POST">
+            <input type="text" name="name" placeholder="Usuario" required>
+            <input type="password" name="password" placeholder="Contraseña" required>
+            <input type="password" name="password_verification" placeholder="Verificar contraseña" required>
+            <button type="submit" class="btn-register-user">Registrarse</button>
+        </form>
+        <p>¿Ya tienes cuenta? <strong><a href="{{ url_for('view_user.login') }}" style="color: #007bff;">Inicia sesión</a></strong></p>
+    </div>
+{% endblock %}

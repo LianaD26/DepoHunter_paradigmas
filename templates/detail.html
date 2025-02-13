@@ -76,18 +76,22 @@
         </div>
 
         <textarea id="comentario-texto" placeholder="Escribe tu comentario..." rows="3"></textarea>
-        <button onclick="publicarComentario()">Publicar</button>        
+        <button class="btn-publicar" onclick="publicarComentario()">Publicar</button>        
     </div>
 
     <div class="location">
         <div>
-            <h3>
-                A dónde irás:
-            </h3>
-            Guarne, Antioquia.
+            <br><br>
+            <h3 style="text-align: left;">A dónde irás:</h3>
+            <p id="ubicacion-texto">{{ alojamiento.ubicacion }}</p>
         </div>
-        <!--Mapa con esa ubicación-->
-        
+        <div id="mapa" style="height: 320px; width: 100%;"></div>
+    </div>
+
+    <div class="comunicacion-host">
+        <h3 style="text-align: left;">Comunícate con el anfitrión:</h3>
+        <textarea id="mensaje-host" placeholder="Escribe tu mensaje..." rows="3"></textarea>
+        <button class="btn-enviar-host">Publicar</button>   
     </div>
 
 {% endblock %}
