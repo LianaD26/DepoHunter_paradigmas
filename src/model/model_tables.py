@@ -19,21 +19,18 @@ class Lodging:
         self.rooms_number = rooms_number
         self.bathrooms_number = bathrooms_number
         self.bedrooms_number = bedrooms_number
-        self.id_host = id_host
-
     
-    class User: #usuario
-        def __init__(self, name, password):
-            self.name = name
-            self.password = password
+class User: #usuario
+    def __init__(self, name, password):
+        self.name = name
+        self.password = password
         
-
-        @staticmethod
-        def checkregister(consult):
-            if consult is None:
-                pass
-            else: 
-                raise user_repeact("Ya hay un usuario registrado con este usuario")
+    @staticmethod
+    def checkregister(consult):
+        if consult is None:
+            pass
+        else: 
+            raise user_repeact("Ya hay un usuario registrado con este usuario")
 
 
 
@@ -46,9 +43,9 @@ class Reservation:
 
 
 class Image:
-    def __init__(self,id_image,lodging,addressone,addresstwo,addresstree):
+    def __init__(self,id_image,id_lodging,addressone,addresstwo,addresstree):
         self.id_image=id_image
-        self.lodging=lodging
+        self.id_lodging=id_lodging
         self.addressone=addressone
         self.addresstwo=addresstwo
         self.addresstree=addresstree

@@ -1,61 +1,26 @@
 name,city,price,type,capacity,rooms_number,bathrooms_number,bedrooms_number
-
-data = {
-    "name": [
-        "Apartamento Moderno", "Casa Colonial", "Cabaña Rústica", "Loft Lujoso", "Villa Marítima",
-        "Casa Campestre", "Penthouse Exclusivo", "Refugio en la Montaña", "EcoLodge Selva", "Hacienda Tradicional",
-        "Bungalow Azul", "Casa del Lago", "Estudio Urbano", "Cabaña del Bosque", "Hotel Boutique",
-        "Hostal Bohemio", "Chalet Alpino", "Casa del Sol", "Apartamento Ejecutivo", "Finca Cafetera",
-        "Villa Romántica", "Cabaña del Río", "Resort de Lujo", "Casa Mirador", "Glamping Estelar"
-    ],
-    "city": [
-        "Bogotá", "Cartagena", "Armenia", "Medellín", "Santa Marta",
-        "Villavicencio", "Cali", "Manizales", "Leticia", "Pereira",
-        "San Andrés", "Guatapé", "Bucaramanga", "Popayán", "Barranquilla",
-        "Santa Marta", "Tunja", "Neiva", "Pasto", "Armenia",
-        "Cúcuta", "Ibagué", "Montería", "Manizales", "Boyacá"
-    ],
-    "price": [
-        120, 250, 90, 180, 300,
-        140, 275, 100, 85, 230,
-        320, 210, 150, 110, 400,
-        95, 170, 160, 200, 220,
-        130, 190, 350, 280, 140
-    ],
-    "type": [
-        "Apartamento", "Casa", "Casa", "Casa", "Apartamento",
-        "Casa de huéspedes", "Apartamento", "Cabaña", "Cabaña", "Casa",
-        "Casa de huéspedes", "Casa de huéspedes", "Casa", "Casa de huéspedes", "Casa de huéspedes",
-        "Apartamento", "Apartamento", "Casa", "Apartamento", "Casa de huéspedes",
-        "Casa de huéspedes", "Casa", "Apartamento", "Casa", "Apartamento"
-    ],
-    "capacity": [
-        4, 8, 6, 2, 10,
-        6, 5, 4, 3, 12,
-        7, 9, 2, 5, 15,
-        10, 6, 5, 3, 12,
-        8, 7, 20, 6, 4
-    ],
-    "rooms_number": [
-        2, 4, 3, 1, 5,
-        3, 4, 2, 2, 6,
-        3, 5, 1, 2, 8,
-        5, 3, 3, 2, 5,
-        4, 3, 10, 3, 2
-    ],
-    "bathrooms_number": [
-        2, 3, 2, 1, 4,
-        2, 3, 1, 1, 4,
-        2, 3, 1, 1, 5,
-        3, 2, 2, 1, 3,
-        2, 2, 8, 2, 1
-    ],
-    "bedrooms_number": [
-        2, 4, 3, 1, 5,
-        3, 4, 2, 2, 6,
-        3, 5, 1, 2, 8,
-        4, 3, 3, 2, 5,
-        4, 3, 9, 3, 2
-    ]
-}
-
+Apartamento Moderno,Bogotá,120,Apartamento,4,2,2,2
+Casa Colonial,Cartagena,250,Casa,8,4,3,4
+Cabaña Rústica,Armenia,90,Casa,6,3,2,3
+Loft Lujoso,Medellín,180,Casa,2,1,1,1
+Villa Marítima,Santa Marta,300,Apartamento,10,5,4,5
+Casa Campestre,Villavicencio,140,Casa de huéspedes,6,3,2,3
+Penthouse Exclusivo,Cali,275,Apartamento,5,4,3,4
+Refugio en la Montaña,Manizales,100,Casa,4,2,1,2
+EcoLodge Selva,Leticia,85,Casa,3,2,1,2
+Hacienda Tradicional,Pereira,230,Casa,12,6,4,6
+Bungalow Azul,San Andrés,320,Casa de huéspedes,7,3,2,3
+Casa del Lago,Guatapé,210,Casa de huéspedes,9,5,3,5
+Estudio Urbano,Bucaramanga,150,Casa,2,1,1,1
+Cabaña del Bosque,Popayán,110,Casa de huéspedes,5,2,1,2
+Hotel Boutique,Barranquilla,400,Casa de huéspedes,15,8,5,8
+Hostal Bohemio,Santa Marta,95,Apartamento,10,5,3,4
+Chalet Alpino,Tunja,170,Apartamento,6,3,2,3
+Casa del Sol,Neiva,160,Casa,5,3,2,3
+Apartamento Ejecutivo,Pasto,200,Apartamento,3,2,1,2
+Finca Cafetera,Armenia,220,Casa de huéspedes,12,5,3,5
+Villa Romántica,Cúcuta,130,Casa de huéspedes,8,4,2,4
+Cabaña del Río,Ibagué,190,Casa,7,3,2,3
+Resort de Lujo,Montería,350,Apartamento,20,10,8,9
+Casa Mirador,Manizales,280,Casa,6,3,2,3
+Glamping Estelar,Boyacá,140,Apartamento,4,2,1,2

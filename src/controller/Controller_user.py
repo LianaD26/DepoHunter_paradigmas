@@ -7,7 +7,6 @@ import pandas as pd
 sys.path.append("DepoHunter_paradigmas/src")
 import config.SecretConfig as secretconfig
 import model.model_tables as models
-import utils.logic_controllerresult as logic_cont
 import controller.Base_Controller as B_Controller
 
 #achu
@@ -40,8 +39,8 @@ class ControllerUser:
         
 
 
-user_ejemplo=ControllerUser()
+#user_ejemplo=ControllerUser()
 #user_ejemplo.CreateTableUser()
-user_element=models.User(name="David",password="123456")
-user_ejemplo.PostTableUser(element=user_element)
+#user_element=models.User(name="David",password="123456")
+#user_ejemplo.PostTableUser(element=user_element)
 #user_ejemplo.DeleteTableUser()

@@ -7,7 +7,6 @@ import pandas as pd
 sys.path.append("DepoHunter_paradigmas/src")
 import config.SecretConfig as secretconfig
 import model.model_tables as models
-import utils.logic_controllerresult as logic_cont
 import controller.Base_Controller as B_Controller
 
 class ControllerImage:

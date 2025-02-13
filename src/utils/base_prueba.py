@@ -2,17 +2,62 @@ import pandas as pd
 
 # Crear un DataFrame con registros ficticios para la clase Lodging
 data = {
-    "name": ["Casa Bella", "Sunset Lodge", "Mountain Retreat", "Urban Loft", "Beach House"],
-    "city": ["Madrid", "Barcelona", "Zaragoza", "Valencia", "Málaga"],
-    "latitude": ["40.4168N", "41.3879N", "41.6488N", "39.4699N", "36.7213N"],
-    "longitude": ["3.7038W", "2.1699E", "0.8891W", "0.3763W", "4.4214W"],
-    "price": [150, 200, 120, 250, 300],
-    "type": ["Casa", "Apartamento", "Casa", "Apartamento", "Casa"],
-    "capacity": [4, 6, 5, 3, 8],
-    "rooms_number": [3, 4, 3, 2, 5],
-    "bathrooms_number": [2, 3, 2, 1, 4],
-    "bedrooms_number": [2, 3, 2, 1, 4],
-    "id_host": [101, 102, 103, 104, 105]
+    "name": [
+        "Apartamento Moderno", "Casa Colonial", "Cabaña Rústica", "Loft Lujoso", "Villa Marítima",
+        "Casa Campestre", "Penthouse Exclusivo", "Refugio en la Montaña", "EcoLodge Selva", "Hacienda Tradicional",
+        "Bungalow Azul", "Casa del Lago", "Estudio Urbano", "Cabaña del Bosque", "Hotel Boutique",
+        "Hostal Bohemio", "Chalet Alpino", "Casa del Sol", "Apartamento Ejecutivo", "Finca Cafetera",
+        "Villa Romántica", "Cabaña del Río", "Resort de Lujo", "Casa Mirador", "Glamping Estelar"
+    ],
+    "city": [
+        "Bogotá", "Cartagena", "Armenia", "Medellín", "Santa Marta",
+        "Villavicencio", "Cali", "Manizales", "Leticia", "Pereira",
+        "San Andrés", "Guatapé", "Bucaramanga", "Popayán", "Barranquilla",
+        "Santa Marta", "Tunja", "Neiva", "Pasto", "Armenia",
+        "Cúcuta", "Ibagué", "Montería", "Manizales", "Boyacá"
+    ],
+    "price": [
+        120, 250, 90, 180, 300,
+        140, 275, 100, 85, 230,
+        320, 210, 150, 110, 400,
+        95, 170, 160, 200, 220,
+        130, 190, 350, 280, 140
+    ],
+    "type": [
+    "Apartamento", "Casa", "Casa", "Casa", "Apartamento",
+    "Casa de huéspedes", "Apartamento", "Casa", "Casa", "Casa",
+    "Casa de huéspedes", "Casa de huéspedes", "Casa", "Casa de huéspedes", "Casa de huéspedes",
+    "Apartamento", "Apartamento", "Casa", "Apartamento", "Casa de huéspedes",
+    "Casa de huéspedes", "Casa", "Apartamento", "Casa", "Apartamento"
+    ],
+    "capacity": [
+        4, 8, 6, 2, 10,
+        6, 5, 4, 3, 12,
+        7, 9, 2, 5, 15,
+        10, 6, 5, 3, 12,
+        8, 7, 20, 6, 4
+    ],
+    "rooms_number": [
+        2, 4, 3, 1, 5,
+        3, 4, 2, 2, 6,
+        3, 5, 1, 2, 8,
+        5, 3, 3, 2, 5,
+        4, 3, 10, 3, 2
+    ],
+    "bathrooms_number": [
+        2, 3, 2, 1, 4,
+        2, 3, 1, 1, 4,
+        2, 3, 1, 1, 5,
+        3, 2, 2, 1, 3,
+        2, 2, 8, 2, 1
+    ],
+    "bedrooms_number": [
+        2, 4, 3, 1, 5,
+        3, 4, 2, 2, 6,
+        3, 5, 1, 2, 8,
+        4, 3, 3, 2, 5,
+        4, 3, 9, 3, 2
+    ]
 }
 
 # Convertir a DataFrame

@@ -7,7 +7,6 @@ import pandas as pd
 sys.path.append("DepoHunter_paradigmas/src")
 import config.SecretConfig as secretconfig
 import model.model_tables as models
-import utils.logic_controllerresult as logic_cont
 import controller.Base_Controller as B_Controller
 
 
@@ -33,6 +32,6 @@ class ControllerReservation:
 
 #reservation_ejemeplo=ControllerReservation()
 #reservation_ejemeplo.CreateTableReservation()
-#reservation_element=models.reservation(id_reservation=None,id_lodging=123,initial_date="12-02-2025",end_date= "8-02-2025")
+#reservation_element=models.Reservation(id_reservation=None,id_lodging=123,initial_date="2025-12-02",end_date= "2025-8-02")
 #reservation_ejemeplo.PostTableReservation(reservation_element)
 #reservation_ejemeplo.DeleteTableReservation()

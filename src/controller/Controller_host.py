@@ -7,7 +7,6 @@ import pandas as pd
 sys.path.append("DepoHunter_paradigmas/src")
 import config.SecretConfig as secretconfig
 import model.model_tables as models
-import utils.logic_controllerresult as logic_cont
 import controller.Base_Controller as B_Controller
 
 
@@ -17,8 +16,8 @@ class Controllerhost:
     
     def CreateTableHost(self):
         query="""CREATE TABLE IF NOT EXISTS host(
-                host int not null
-                id_lodgin not null
+                host int not null,
+                id_lodging int not null
         );
         """
         self.base_controller.CreateTable(query=query)
