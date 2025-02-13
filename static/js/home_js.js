@@ -18,3 +18,35 @@ document.addEventListener("DOMContentLoaded", function() {
         input.focus();
     });
 });
+
+var swiper = new Swiper(".mySwiper", {
+    loop: true,
+    navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+    },
+    pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+    },
+});
+function procesarPago() {
+    let tarjeta = document.getElementById('tarjeta').value;
+    let nombre = document.getElementById('nombre').value;
+    let cvv = document.getElementById('cvv').value;
+    let fecha = document.getElementById('fecha').value;
+    let mensaje = document.getElementById('mensaje');
+
+    if (tarjeta.length < 16 || nombre === "" || cvv.length < 3 || fecha === "") {
+        mensaje.style.color = "red";
+        mensaje.innerText = "Por favor, complete todos los campos correctamente.";
+        return;
+    }
+
+    mensaje.style.color = "green";
+    mensaje.innerText = "Procesando pago...";
+
+    setTimeout(() => {
+        mensaje.innerText = "¡Pago realizado con éxito!";
+    }, 2000);
+}
