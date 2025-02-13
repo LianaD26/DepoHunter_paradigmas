@@ -49,20 +49,6 @@ class ControllerLodging:
                     VALUES %s"""
         self.base_controller.PostTable(query, data)
 
-    
-    def PostOneElement(self,element):
-        query=f"""
-        Insert into lodging(name,city,
-                            price,type,capacity,rooms_number,
-                            bathrooms_number ,bedrooms_number,
-                            id_host)
-        values
-        ('{element.name}', '{element.city}' ,'{element.latitude}','{element.longitude}',
-        {element.price},'{element.type}',{element.capacity},{element.rooms_number},
-        {element.bathrooms_number},{element.bedrooms_number},{element.id_host}
-        );"""
-        self.base_controller.PostTableOneElement(query=query)
-
 
 #lodging_ejemplo=ControllerLodging()
 #lodging_ejemplo.CreateTableLodging()

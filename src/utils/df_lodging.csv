@@ -1,4 +1,4 @@
-name,city,latitude,longitude,price,type,capacity,rooms_number,bathrooms_number,bedrooms_number,id_host
+name,city,price,type,capacity,rooms_number,bathrooms_number,bedrooms_number
 
 data = {
     "name": [
@@ -14,20 +14,6 @@ data = {
         "San Andrés", "Guatapé", "Bucaramanga", "Popayán", "Barranquilla",
         "Santa Marta", "Tunja", "Neiva", "Pasto", "Armenia",
         "Cúcuta", "Ibagué", "Montería", "Manizales", "Boyacá"
-    ],
-    "latitude": [
-        "4.7110N", "10.3910N", "4.5339N", "6.2442N", "11.2408N",
-        "4.1421N", "3.4516N", "5.0689N", "4.2150S", "4.8087N",
-        "12.5833N", "6.2322N", "7.1193N", "2.4448N", "10.9639N",
-        "11.2420N", "5.5353N", "2.9273N", "1.2136N", "4.5331N",
-        "7.8945N", "4.4389N", "8.7485N", "5.0596N", "5.4009N"
-    ],
-    "longitude": [
-        "74.0721W", "75.4794W", "75.6811W", "75.5812W", "74.1990W",
-        "73.6371W", "76.5320W", "75.5174W", "69.9406W", "75.6909W",
-        "81.7006W", "75.1652W", "73.1227W", "76.6147W", "74.7964W",
-        "74.2100W", "73.3610W", "75.2818W", "77.2858W", "75.6715W",
-        "72.5078W", "75.2321W", "75.8854W", "75.5809W", "72.9198W"
     ],
     "price": [
         120, 250, 90, 180, 300,
@@ -70,13 +56,6 @@ data = {
         3, 5, 1, 2, 8,
         4, 3, 3, 2, 5,
         4, 3, 9, 3, 2
-    ],
-    "id_host": [
-        201, 202, 203, 204, 205,
-        206, 207, 208, 209, 210,
-        211, 212, 213, 214, 215,
-        216, 217, 218, 219, 220,
-        221, 222, 223, 224, 225
     ]
 }
 

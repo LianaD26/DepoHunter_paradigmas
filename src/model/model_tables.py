@@ -44,13 +44,14 @@ class Reservation:
         self.initial_date = datetime.strptime(initial_date, '%Y-%m-%d')
         self.end_date = datetime.strptime(end_date, '%Y-%m-%d')
 
-    
 
 class Image:
-    def __init__(self,id_image,lodging,address):
+    def __init__(self,id_image,lodging,addressone,addresstwo,addresstree):
         self.id_image=id_image
         self.lodging=lodging
-        self.address=address
+        self.addressone=addressone
+        self.addresstwo=addresstwo
+        self.addresstree=addresstree
         return
 
 class Host:

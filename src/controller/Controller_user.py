@@ -25,10 +25,6 @@ class ControllerUser:
                 );"""
         self.base_controller.CreateTable(query=query)
     
-    def DeleteTableUser(self):
-        query="""DROP TABLE IF EXISTS users"""
-        self.base_controller.DeleteTable(query=query)
-    
     
     def PostTableUser(self,element):
         try:     

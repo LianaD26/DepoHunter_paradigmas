@@ -38,8 +38,6 @@ class ControllerResult():
             return None    
     
     
-    
-    
     def FilterCityDate(self, city, initial_date, end_date):
         query = f""" SELECT l.name, l.city, l.price, 
                     l.type, l.capacity, l.rooms_number, 

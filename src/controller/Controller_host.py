@@ -18,20 +18,10 @@ class Controllerhost:
     def CreateTableHost(self):
         query="""CREATE TABLE IF NOT EXISTS host(
                 host int not null
+                id_lodgin not null
         );
         """
         self.base_controller.CreateTable(query=query)
-    
-    
-    def DeleteTableHost(self):
-        query="""DROP TABLE IF EXISTS host"""
-        self.base_controller.DeleteTable(query=query)
-    
-    
-    def posthost(self,element):
-        query=f"""insert into host(host)
-        values({element.host});"""
-        self.base_controller.PostTableOneElement(query=query)
 
 #ejemplofun=Controllerhost()
 #ejemplofun.CreateTableHost()

@@ -18,19 +18,12 @@ class ControllerImage:
         query=""" CREATE TABLE IF NOT EXISTS Image(
         id_image SERIAL PRIMARY KEY,
         id_lodging varchar(50) not null,
-        address varchar(50) not null
+        addressone varchar(50) not null,
+        addresstwo varchar(50) not null,
+        addresstree varchar(50) not null
         );
         """
         self.base_controller.CreateTable(query=query)
-
-    def DeleteTableImage(self):
-        query="""DROP TABLE IF EXISTS Image"""
-        self.base_controller.DeleteTable(query=query)
-
-    def postImage(self,element):
-        query=f""" insert into Image(id_lodging,address)
-        values('{element.id_lodging}','{element.id_lodging}');"""
-        self.base_controller.PostTableOneElement(query=query) 
 
 #imagen_ejemeplo=ControllerImage()
 #imagen_ejemeplo.CreateTableImage()

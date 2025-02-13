@@ -24,10 +24,6 @@ class ControllerReservation:
         );"""
         self.base_controller.CreateTable(query=query)
     
-    def DeleteTableReservation(self): 
-        query="""DROP TABLE IF EXISTS reservation"""
-        self .base_controller.DeleteTable(query=query)
-    
     def PostTableReservation(self,element):
         query=f""" insert into reservation(id_lodging,initial_date, end_date)
                     values({element.id_lodging},'{element.initial_date}','{(element.end_date)}'
