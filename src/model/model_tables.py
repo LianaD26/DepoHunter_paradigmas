@@ -6,6 +6,21 @@ sys.path.append("DepoHunter_paradigmas/src")
 class user_repeact(Exception):
     pass
 
+class InvalidRatingError(Exception):
+    pass
+
+class EmptyCommentError(Exception):
+    pass
+
+class UserAlreadyExistsError(Exception):
+    pass
+
+class InvalidUserNameError(Exception):
+    pass
+
+class InvalidPasswordError(Exception):
+    pass
+
 class Lodging:
     def __init__(self, id, name, city, price,
                  type, capacity, rooms_number, bathrooms_number,
@@ -24,6 +39,12 @@ class User: #usuario
     def __init__(self, name, password):
         self.name = name
         self.password = password
+
+    def validate_user(self):
+        if len(self.name) < 3:
+            raise InvalidUserNameError("Username must be at least 3 characters long.")
+        if len(self.password) < 6:
+            raise InvalidPasswordError("Password must be at least 6 characters long.")
         
     @staticmethod
     def checkregister(consult):
@@ -31,7 +52,6 @@ class User: #usuario
             pass
         else: 
             raise user_repeact("Ya hay un usuario registrado con este usuario")
-
 
 
 class Reservation:
@@ -71,3 +91,13 @@ class Review:
         self.lodging = lodging
         self.rating = rating
         self.comment = comment
+
+    def validate_review(self):
+        if not isinstance(self.rating, int) or not (1 <= self.rating <= 5):
+            raise InvalidRatingError("Rating must be an integer between 1 and 5.")
+        
+        if not self.comment or self.comment.strip() == "":
+            raise EmptyCommentError("Comment cannot be empty.")
+        
+        if len(self.comment) > 100:
+            raise EmptyCommentError("Comment cannot exceed 500 characters.")
