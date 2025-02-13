@@ -90,9 +90,7 @@ class Review:
         self.user_name  = user_name 
         self.id_lodging = id_lodging
         self.rating = rating
-<<<<<<< HEAD
         self.comment = comment
-=======
         self.comment = comment
 
     def validate_review(self):
@@ -104,4 +102,3 @@ class Review:
         
         if len(self.comment) > 100:
             raise EmptyCommentError("Comment cannot exceed 500 characters.")
->>>>>>> b25bcfd9c110c1fbd40cdd478b09475a1562179d
