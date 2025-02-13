@@ -23,9 +23,13 @@ class ControllerImage:
         );
         """
         self.base_controller.CreateTable(query=query)
+    
+        def PostDataImage(self,data):
+            query = """INSERT INTO lodging (id_image,id_lodging,
+                        addressone,addresstwo,addresstree) 
+                        VALUES %s"""
+            self.base_controller.PostTable(query, data)
 
-imagen_ejemeplo=ControllerImage()
-imagen_ejemeplo.CreateTableImage()
-#imagen_element=models.image(id_image=None,lodging="123",address="453")
-#imagen_ejemeplo.postImage(element=imagen_element)
-#imagen_ejemeplo.DeleteTableImage()
+#imagen_ejemeplo=ControllerImage()
+#imagen_ejemeplo.CreateTableImage()
+#imagen_ejemplo.PostDataImage(data="")

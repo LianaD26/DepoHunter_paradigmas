@@ -39,6 +39,8 @@ class ControllerLodging:
         self.base_controller.PostTable(query, data)
 
 
+
+
 #lodging_ejemplo=ControllerLodging()
 #lodging_ejemplo.CreateTableLodging()
 #lodging_ejemplo.PostTableLodging(data="DepoHunter_paradigmas/src/utils/df_lodging.csv")

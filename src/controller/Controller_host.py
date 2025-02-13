@@ -21,8 +21,13 @@ class Controllerhost:
         );
         """
         self.base_controller.CreateTable(query=query)
+    
+    def PostDataHost(self,data):
+        query = """INSERT INTO lodging (host_name,id_lodging) 
+                    VALUES %s"""
+        self.base_controller.PostTable(query, data)
 
-ejemplofun=Controllerhost()
-ejemplofun.CreateTableHost()
-#host_element=models.host(host=12)
-#ejemplofun.posthost(element=host_element)
+
+#ejemplofun=Controllerhost()
+#ejemplofun.CreateTableHost()
+#ejemplofun.PostDataHost(data="")

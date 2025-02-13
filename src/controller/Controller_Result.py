@@ -49,7 +49,7 @@ class ControllerResult():
                     LEFT JOIN reservation r ON l.id = r.id_lodging
                     LEFT JOIN host h ON l.id = h.id_lodging
                     LEFT JOIN image i ON l.id = i.id_lodging
-                    WHERE l.city = '{city}'  AND r.initial_date = '{initial_date}' AND r.end_date = '{end_date}';
+                    WHERE l.city = '{city}'  AND r.initial_date= '{initial_date}' AND r.end_date = '{end_date}';
                     """
         return self._execute_query(query)
     
@@ -84,8 +84,8 @@ class ControllerResult():
 
 
 # Ejemplo de uso
-elementobusqueda = ControllerResult()
-print(elementobusqueda.filterdefault())
-print(elementobusqueda.FilterCityDate(city="Madrid", initial_date="2025-12-02", end_date="2025-12-02"))
-print(elementobusqueda.Filterprice(price=150))
-print(elementobusqueda.filtertype(type="Casa"))
+#elementobusqueda = ControllerResult()
+#print(elementobusqueda.filterdefault())
+#print(elementobusqueda.FilterCityDate(city="Madrid", initial_date="2025-12-02", end_date="2025-12-02"))
+#print(elementobusqueda.Filterprice(price=150))
+#print(elementobusqueda.filtertype(type="Casa"))
