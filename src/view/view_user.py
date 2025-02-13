@@ -10,13 +10,6 @@ alojamientos = [
 
 @blueprint.route("/")
 def home():
-   # del controlador que va a hacer David debe estar una función que retorne el select de todos los alojamientos de la BD
-   # eso lo va a retornar como una lista de objetos de tipo Alojamiento, y yo voy a mostrar cada uno de sus atributos
-   # a el html le paso el objeto
-   # en la siguiente variable lo que hago es guardar esa lista después de haber importado esa función
-   # alojamientos = obtener_alojamientos()
-   # prueba con (id, nombre, precio)
-   # Simulación de base de datos de alojamientos
    return render_template("home.html", alojamientos=alojamientos)
 
 @blueprint.route("/alojamiento/<int:id>")

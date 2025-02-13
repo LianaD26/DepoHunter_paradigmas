@@ -219,9 +219,9 @@ a:visited{
 /* Botón de reserva con Borde */
 .btn-reserva {
     display: inline-block;
-    background-color: rgb(113, 209, 247);
-    color: white;
-    padding: 12px 20px;
+    background-color: white;
+    border: 3px solid rgb(24, 184, 255); /* Cambio de color del borde */
+    padding: 18px 26px;
     font-size: 18px;
     font-weight: bold;
     text-decoration: none;
@@ -234,8 +234,7 @@ a:visited{
 
 /* Cambio de color en hover */
 .btn-reserva:hover {
-    background-color: white;
-    border: 3px solid rgb(24, 184, 255); /* Cambio de color del borde */
+    background-color: rgb(24, 184, 255); /* Cambio de color del borde */
 }
 #fecha-inicio, #fecha-fin{
     margin-left: 20px;
@@ -246,11 +245,22 @@ a:visited{
 
 /*Estilo de pagos-----------*/
 .container {
+    display: grid;
+    place-items: center; /* Centra el contenedor en el ancho */
+    width: 100%; /* Ocupar todo el ancho */
+    max-width: 500px; /* Ajusta el tamaño del formulario */
+    margin: 0 auto; /* Centrado horizontal */
     background: white;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 400px;
+}
+.container label {
+    display: block; /* Hace que cada label ocupe toda la línea */
+    text-align: left; /* Alinea el texto a la izquierda */
+    font-weight: bold; /* Opcional, para que se vea más claro */
+    margin-bottom: 5px;
+    width: 100%; /* Asegura que el label use todo el ancho del contenedor */
 }
 h2 {
     text-align: center;
@@ -267,8 +277,7 @@ input, select {
     border-radius: 5px;
 }
 .btn-pagar {
-    background-color: white;
-    border: 4px solid rgb(24, 184, 255);
+    background-color: rgb(113, 209, 247);
     padding: 12px;
     border: none;
     width: 100%;
@@ -280,9 +289,66 @@ input, select {
 .btn-pagar:hover {
     background-color: rgb(24, 184, 255);
 }
+/*Esto no sale todavía*/
 .mensaje {
     text-align: center;
     margin-top: 10px;
     font-weight: bold;
     color: green;
 }
+/*Calificación de los alojamientos*/
+.rating {
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.star {
+    color: #ccc; /* Estrellas grises por defecto */
+    transition: color 0.3s;
+}
+
+.star.active {
+    color: gold; /* Estrellas doradas cuando están activas */
+}
+/*Estilo de comentarios*/
+.alerta {
+    color: red;
+    font-weight: bold;
+}
+.comentarios {
+    margin-top: 40px;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+.comentarios textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+.comentarios button {
+    padding: 10px 15px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.comentarios button:disabled {
+    background: gray;
+    cursor: not-allowed;
+}
+
+.comentario {
+    margin-top: 10px;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+

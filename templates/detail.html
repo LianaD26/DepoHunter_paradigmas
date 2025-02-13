@@ -31,13 +31,18 @@
         <div class="columna-derecha">
             <div class="info-alojamiento">
                 <h2>Calificación promedio: </h2>
-                <h1>
-                <img src="{{ url_for('static', filename='images/star.png') }}" alt="logo de la estrella">
-                5 estrellas
-                <img src="{{ url_for('static', filename='images/star.png') }}" alt="logo de la estrella">
-                </h1>
+                <div class="rating">
+                    <span class="star" data-value="1">★</span>
+                    <span class="star" data-value="2">★</span>
+                    <span class="star" data-value="3">★</span>
+                    <span class="star" data-value="4">★</span>
+                    <span class="star" data-value="5">★</span>
+                </div>
+                <br><br>
                 <h2>$150.000</h2> precio por noche
+                <br>
             </div>
+            <br>
             <div class="fechas-reserva">
                 <div class="fecha-izquierda">
                     <strong>Fecha inicio</strong><br>
@@ -48,11 +53,41 @@
                     <input type="date" id="fecha-fin" required>
                 </div>
             </div>
+            <br><br>
             <strong>Total a pagar: $1.500.000</strong><br>
             5 noches<br>
             <!-- Botón de pago -->
             <a href="{{ url_for('view_user.pago') }}" class="btn-reserva">Reservar</a>
         </div>
+    </div>
+
+    <!-- 🔹 Sección de Comentarios -->
+    <div class="comentarios">
+        <h3 style="text-align: left;">Conoce la experiencia de otros usuarios</h3>
+
+        <!-- Contenedor donde aparecerán los comentarios -->
+        <div id="lista-comentarios">
+            {% for comentario in comentarios %}
+                <div class="comentario">
+                    <strong>{{ comentario.usuario }}</strong>:
+                    <p>{{ comentario.texto }}</p>
+                </div>
+            {% endfor %}
+        </div>
+
+        <textarea id="comentario-texto" placeholder="Escribe tu comentario..." rows="3"></textarea>
+        <button onclick="publicarComentario()">Publicar</button>        
+    </div>
+
+    <div class="location">
+        <div>
+            <h3>
+                A dónde irás:
+            </h3>
+            Guarne, Antioquia.
+        </div>
+        <!--Mapa con esa ubicación-->
+        
     </div>
 
 {% endblock %}

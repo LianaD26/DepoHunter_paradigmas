@@ -5,7 +5,7 @@
     <h2>Pago del Alojamiento</h2>
     
     <label for="nombre">Banco:</label>
-    <input type="text" id="nombre" placeholder="Nombre completo" required>
+    <input type="text" id="nombre" placeholder="" required>
 
     <label for="tarjeta">Número de Tarjeta:</label>
     <input type="text" id="tarjeta" placeholder="**** **** **** ****" maxlength="19" required>
@@ -14,7 +14,7 @@
     <label for="cvv">CVV:</label>
     <input type="text" id="cvv" placeholder="***" maxlength="3" required>
 
-    <button class="btn-pagar" onclick="procesarPago()">Pagar Ahora</button>
+    <button class="btn-pagar" onclick="procesarPago()"><strong>Paga Ahora</strong></button>
     <p id="mensaje" class="mensaje"></p>
 </div>
 {% endblock %}
