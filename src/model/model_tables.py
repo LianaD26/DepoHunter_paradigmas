@@ -54,7 +54,7 @@ class Image:
 class Host:
     def __init__(self,id_lodging,host_name):
         self.host_name=host_name
-        self.id_lodging
+        self.id_lodging= id_lodging
         return
         
 

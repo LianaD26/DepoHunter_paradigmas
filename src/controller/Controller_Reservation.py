@@ -22,7 +22,7 @@ class ControllerReservation:
             end_date DATE NOT NULL
         );"""
         self.base_controller.CreateTable(query=query)
-    
+
     def PostTableReservation(self,element):
         query=f""" insert into reservation(id_lodging,initial_date, end_date)
                     values({element.id_lodging},'{element.initial_date}','{(element.end_date)}'
