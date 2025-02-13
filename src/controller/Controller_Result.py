@@ -22,50 +22,76 @@ class ControllerResult():
         cursor.close()
         return search
     
+    
     def filterdefault(self):
-        query = """ SELECT l.name, l.city, l.latitude, l.longitude, l.price, 
+        query = """ SELECT l.name, l.city, l.price, 
                 l.type, l.capacity, l.rooms_number, 
                 l.bathrooms_number, l.bedrooms_number, r.initial_date, r.end_date
                 FROM lodging l
                 LEFT JOIN reservation r ON l.id = r.id_lodging
                 """
         search = self._execute_query(query)
-        return logic_cont.ManipulateData(search)
+        
+        if search is not None: 
+            return logic_cont.ManipulateData(search)
+        else: 
+            return None    
+    
+    
+    
     
     def FilterCityDate(self, city, initial_date, end_date):
-        query = f""" SELECT l.name, l.city, l.latitude, l.longitude, l.price, 
+        query = f""" SELECT l.name, l.city, l.price, 
                     l.type, l.capacity, l.rooms_number, 
                     l.bathrooms_number, l.bedrooms_number, r.initial_date, r.end_date
                     FROM lodging l
                     LEFT JOIN reservation r ON l.id = r.id_lodging
                     WHERE l.city = '{city}' OR r.initial_date = '{initial_date}' OR r.end_date = '{end_date}' """
         search = self._execute_query(query)
-        return logic_cont.ManipulateData(search)
+        
+        if search is not None:    
+            return logic_cont.ManipulateData(search)
+        else:
+            return None
+    
+    
     
     def Filterprice(self, price):
-        query = f""" SELECT l.name, l.city, l.latitude, l.longitude, l.price, 
+        query = f""" SELECT l.name, l.city, l.price, 
                     l.type, l.capacity, l.rooms_number, 
                     l.bathrooms_number, l.bedrooms_number, r.initial_date, r.end_date
                     FROM lodging l
                     LEFT JOIN reservation r ON l.id = r.id_lodging
                     WHERE l.price = {price} """
         search = self._execute_query(query)
-        return logic_cont.ManipulateData(search)
+        
+        if search is not None: 
+            return logic_cont.ManipulateData(search)
+        else:
+            return
     
     def filtertype(self, type):
-        query = f""" SELECT l.name, l.city, l.latitude, l.longitude, l.price, 
+        query = f""" SELECT l.name, l.city, l.price, 
                     l.type, l.capacity, l.rooms_number, 
                     l.bathrooms_number, l.bedrooms_number, r.initial_date, r.end_date
                     FROM lodging l
                     LEFT JOIN reservation r ON l.id = r.id_lodging
                     WHERE l.type = '{type}' """
         search = self._execute_query(query)
-        return logic_cont.ManipulateData(search)
+        
+        if search is not None: 
+            return logic_cont.ManipulateData(search)
+        else:
+            return None
     
     def filterUser(self, name):
         query = f""" SELECT * FROM users WHERE name='{name}' """
         search = self._execute_query(query, fetch_method="fetchone")
-        return models.user(name=search[0], password=search[1])
+        
+        if search is not None: 
+            return models.user(name=search[0], password=search[1])
+        else: 
+            return None
 
 
 #elementobusqueda=ControllerResult()

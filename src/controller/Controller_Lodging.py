@@ -26,8 +26,6 @@ class ControllerLodging:
                     id serial PRIMARY KEY,
                     name varchar(50) NOT NULL,
                     city varchar(50) NOT NULL,
-                    latitude varchar(50) NOT NULL,
-                    longitude varchar(50) NOT NULL,
                     price int NOT NULL,
                     type lodging_type NOT NULL,  
                     capacity int NOT NULL,
@@ -46,7 +44,7 @@ class ControllerLodging:
 
     
     def PostTableLodging(self, data):
-        query = """INSERT INTO lodging (name, city, latitude, longitude, price, 
+        query = """INSERT INTO lodging (name, city, price, 
                     type, capacity, rooms_number, bathrooms_number, bedrooms_number, id_host) 
                     VALUES %s"""
         self.base_controller.PostTable(query, data)
@@ -54,7 +52,7 @@ class ControllerLodging:
     
     def PostOneElement(self,element):
         query=f"""
-        Insert into lodging(name,city,latitude,longitude,
+        Insert into lodging(name,city,
                             price,type,capacity,rooms_number,
                             bathrooms_number ,bedrooms_number,
                             id_host)

@@ -22,9 +22,11 @@ class Controllerhost:
         """
         self.base_controller.CreateTable(query=query)
     
+    
     def DeleteTableHost(self):
         query="""DROP TABLE IF EXISTS host"""
         self.base_controller.DeleteTable(query=query)
+    
     
     def posthost(self,element):
         query=f"""insert into host(host)

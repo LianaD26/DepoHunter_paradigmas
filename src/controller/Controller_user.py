@@ -10,6 +10,10 @@ import model.model_tables as models
 import utils.logic_controllerresult as logic_cont
 import controller.Base_Controller as B_Controller
 
+#achu
+#import model.models_table as models
+#achu
+
 class ControllerUser:
     def __init__(self):
         self.base_controller=B_Controller.BaseController()
@@ -25,17 +29,23 @@ class ControllerUser:
         query="""DROP TABLE IF EXISTS users"""
         self.base_controller.DeleteTable(query=query)
     
+    
     def PostTableUser(self,element):
-        query=f""" insert into users(name,password)
-                    values
-                    ('{element.name}','{element.password}');
-        """
-        self.base_controller.PostTableOneElement(query=query)
+        try:     
+            models.User.checkregister(consult=element)
+            query=f""" insert into users(name,password)
+                        values
+                        ('{element.name}','{element.password}');
+                    """
+            self.base_controller.PostTableOneElement(query=query)
+        
+        except models.user_repeact as error_user_repeact:
+            print(error_user_repeact)
+        
 
 
-
-#user_ejemplo=ControllerUser()
+user_ejemplo=ControllerUser()
 #user_ejemplo.CreateTableUser()
-#user_element=models.user(name="David",password="123456")
-#user_ejemplo.PostTableUser(element=user_element)
+user_element=models.User(name="David",password="123456")
+user_ejemplo.PostTableUser(element=user_element)
 #user_ejemplo.DeleteTableUser()

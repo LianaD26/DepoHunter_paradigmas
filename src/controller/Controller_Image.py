@@ -17,7 +17,7 @@ class ControllerImage:
     def CreateTableImage(self):
         query=""" CREATE TABLE IF NOT EXISTS Image(
         id_image SERIAL PRIMARY KEY,
-        lodging varchar(50) not null,
+        id_lodging varchar(50) not null,
         address varchar(50) not null
         );
         """
@@ -28,8 +28,8 @@ class ControllerImage:
         self.base_controller.DeleteTable(query=query)
 
     def postImage(self,element):
-        query=f""" insert into Image(lodging,address)
-        values('{element.lodging}','{element.lodging}');"""
+        query=f""" insert into Image(id_lodging,address)
+        values('{element.id_lodging}','{element.id_lodging}');"""
         self.base_controller.PostTableOneElement(query=query) 
 
 #imagen_ejemeplo=ControllerImage()
