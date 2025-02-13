@@ -16,13 +16,13 @@ class Controllerhost:
     
     def CreateTableHost(self):
         query="""CREATE TABLE IF NOT EXISTS host(
-                host int not null,
+                host_name int not null,
                 id_lodging int not null
         );
         """
         self.base_controller.CreateTable(query=query)
 
-#ejemplofun=Controllerhost()
-#ejemplofun.CreateTableHost()
+ejemplofun=Controllerhost()
+ejemplofun.CreateTableHost()
 #host_element=models.host(host=12)
 #ejemplofun.posthost(element=host_element)

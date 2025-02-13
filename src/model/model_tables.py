@@ -9,7 +9,7 @@ class user_repeact(Exception):
 class Lodging:
     def __init__(self, id, name, city, price,
                  type, capacity, rooms_number, bathrooms_number,
-                 bedrooms_number, id_host):
+                 bedrooms_number):
         self.id = id
         self.name = name
         self.city = city
@@ -54,7 +54,7 @@ class Image:
 class Host:
     def __init__(self,id_lodging,host_name):
         self.id_lodging
-        self.host=host_name
+        self.host_name=host_name
         return
         
 

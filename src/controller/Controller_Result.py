@@ -4,6 +4,7 @@ from psycopg2.extras import execute_values
 import sys
 import os
 import pandas as pd
+
 sys.path.append("DepoHunter_paradigmas/src")
 import config.SecretConfig as secretconfig
 import model.model_tables as models
@@ -14,82 +15,77 @@ class ControllerResult():
     def __init__(self):
         self.base_controller = B_Controller.BaseController()
     
-    def _execute_query(self, query, fetch_method="fetchall", params=None):
+    def _execute_query(self, query, fetch_method="fetchall"):
         cursor = self.base_controller.connection.cursor()
-        cursor.execute(query, params or [])
-        search = getattr(cursor, fetch_method)()  # Ajustado para que no se pase fetch_size
+        cursor.execute(query)
+        
+        if fetch_method == "fetchone":
+            search = cursor.fetchone()
+        else:
+            search = cursor.fetchall()
+
         cursor.close()
         return search
     
     def filterdefault(self):
-        query = """ SELECT l.name, l.city, l.price, 
-                    l.type, l.capacity, l.rooms_number, 
-                    l.bathrooms_number, l.bedrooms_number, r.initial_date, r.end_date
-                    FROM lodging l
-                    LEFT JOIN reservation r ON l.id = r.id_lodging
+        query = """select  l.name,l.city, l.price,
+                l.type, l.capacity, l.rooms_number
+                ,l.bathrooms_number, l.bedrooms_number,
+                h.host_name,i.addressone,i.addresstwo,i.addresstree
+                from lodging l
+
+                LEFT JOIN host h ON l.id = h.id_lodging
+                LEFT JOIN image i ON l.id = i.id_lodging;
                 """
-        search = self._execute_query(query)
-        
-        if search is not None: 
-            return search
-        else: 
-            return None    
+        return self._execute_query(query)
     
     def FilterCityDate(self, city, initial_date, end_date):
-        query = """ SELECT l.name, l.city, l.price, 
-                    l.type, l.capacity, l.rooms_number, 
-                    l.bathrooms_number, l.bedrooms_number, r.initial_date, r.end_date
+        query = f"""SELECT 
+                    l.name, l.city, l.price,
+                    l.type, l.capacity, l.rooms_number,
+                    l.bathrooms_number, l.bedrooms_number,
+                    h.host_name, i.addressone, i.addresstwo, i.addresstree
                     FROM lodging l
                     LEFT JOIN reservation r ON l.id = r.id_lodging
-                    WHERE l.city = %s OR r.initial_date = %s OR r.end_date = %s """
-        search = self._execute_query(query, params=(city, initial_date, end_date))
-        
-        if search is not None:    
-            return search
-        else:
-            return None
+                    LEFT JOIN host h ON l.id = h.id_lodging
+                    LEFT JOIN image i ON l.id = i.id_lodging
+                    WHERE l.city = '{city}'  AND r.initial_date = '{initial_date}' AND r.end_date = '{end_date}';
+                    """
+        return self._execute_query(query)
     
     def Filterprice(self, price):
-        query = """ SELECT l.name, l.city, l.price, 
-                    l.type, l.capacity, l.rooms_number, 
-                    l.bathrooms_number, l.bedrooms_number, r.initial_date, r.end_date
-                    FROM lodging l
-                    LEFT JOIN reservation r ON l.id = r.id_lodging
-                    WHERE l.price = %s """
-        search = self._execute_query(query, params=(price,))
-        
-        if search is not None: 
-            return search
-        else:
-            return None
+        query = f""" select  l.name,l.city, l.price,
+                    l.type, l.capacity, l.rooms_number
+                    ,l.bathrooms_number, l.bedrooms_number,
+                    h.host_name,i.addressone,i.addresstwo,i.addresstree
+                    from lodging l
+
+                    LEFT JOIN host h ON l.id = h.id_lodging
+                    LEFT JOIN image i ON l.id = i.id_lodging
+                    WHERE l.price = {price} """
+        return self._execute_query(query)
     
     def filtertype(self, type):
-        query = """ SELECT l.name, l.city, l.price, 
-                    l.type, l.capacity, l.rooms_number, 
-                    l.bathrooms_number, l.bedrooms_number, r.initial_date, r.end_date
-                    FROM lodging l
-                    LEFT JOIN reservation r ON l.id = r.id_lodging
-                    WHERE l.type = %s """
-        search = self._execute_query(query, params=(type,))
-        
-        if search is not None: 
-            return search
-        else:
-            return None
+        query = f""" 
+            select  l.name,l.city, l.price,
+                    l.type, l.capacity, l.rooms_number
+                    ,l.bathrooms_number, l.bedrooms_number,
+                    h.host_name,i.addressone,i.addresstwo,i.addresstree
+                    from lodging l
+
+                    LEFT JOIN host h ON l.id = h.id_lodging
+                    LEFT JOIN image i ON l.id = i.id_lodging
+            WHERE l.type = '{type}' """
+        return self._execute_query(query)
     
     def filterUser(self, name):
-        query = """ SELECT * FROM users WHERE name=%s """
-        search = self._execute_query(query, fetch_method="fetchone", params=(name,))
-        
-        if search is not None: 
-            return search
-        else: 
-            return None
+        query = f""" SELECT * FROM users WHERE name = '{name}'"""
+        return self._execute_query(query, fetch_method="fetchone")
 
 
 # Ejemplo de uso
-#elementobusqueda = ControllerResult()
-#print(elementobusqueda.filterdefault())
-#print(elementobusqueda.FilterCityDate(city="Madrid", initial_date="2025-12-02", end_date="2025-12-02"))
-#print(elementobusqueda.Filterprice(price=150))
-#print(elementobusqueda.filtertype(type="Casa"))
+elementobusqueda = ControllerResult()
+print(elementobusqueda.filterdefault())
+print(elementobusqueda.FilterCityDate(city="Madrid", initial_date="2025-12-02", end_date="2025-12-02"))
+print(elementobusqueda.Filterprice(price=150))
+print(elementobusqueda.filtertype(type="Casa"))

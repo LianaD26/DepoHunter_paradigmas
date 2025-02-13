@@ -8,7 +8,7 @@ sys.path.append("DepoHunter_paradigmas/src")
 import config.SecretConfig as secretconfig
 import model.model_tables as models
 import controller.Base_Controller as B_Controller
-
+import controller.Controller_Result as contro_result
 #achu
 #import model.models_table as models
 #achu
@@ -27,7 +27,9 @@ class ControllerUser:
     
     def PostTableUser(self,element):
         try:     
-            models.User.checkregister(consult=element)
+            elementobusqueda=contro_result.ControllerResult()
+
+            models.User.checkregister(consult=elementobusqueda.filterUser(element.name))
             query=f""" insert into users(name,password)
                         values
                         ('{element.name}','{element.password}');
@@ -41,6 +43,6 @@ class ControllerUser:
 
 #user_ejemplo=ControllerUser()
 #user_ejemplo.CreateTableUser()
-#user_element=models.User(name="David",password="123456")
+#user_element=models.User(name="PEPE",password="123456")
 #user_ejemplo.PostTableUser(element=user_element)
 #user_ejemplo.DeleteTableUser()
