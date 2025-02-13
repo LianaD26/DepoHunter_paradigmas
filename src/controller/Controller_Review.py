@@ -14,7 +14,7 @@ class ControllerReview:
     def __init__(self):
         self.base_controller=B_Controller.BaseController()
     
-    def CreateTableUser(self):
+    def CreateTableReview(self):
         query="""CREATE TABLE IF NOT EXISTS review(
                 id_review SERIAL PRIMARY KEY,
                 user_name varchar(50) not null,
