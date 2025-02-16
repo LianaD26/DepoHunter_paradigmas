@@ -339,14 +339,22 @@ input, select {
     border-radius: 5px;
 }
 .comentarios button, .comunicacion-host button, .btn-login-user, .btn-register-user {
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
     padding: 10px 15px;
-    background: #007bff;
+    background: rgb(24, 184, 255);
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 15px;
 }
+
+.btn-login-user:hover, .btn-register-user:hover {
+    background-color: #0056b3;
+}
+
 .comentarios button:disabled {
     background: gray;
     cursor: not-allowed;
@@ -363,4 +371,59 @@ input, select {
     float: left;
 }
 
-/*Login*/
+/*Mis reservas---*/
+.container-reservations {
+    width: 80%;
+    margin: auto;
+    font-family: Arial, sans-serif;
+}
+
+.container-reservations h2, .container-reservations  h4 {
+    color: #333;
+}
+
+.container-reservations table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.container-reservations th, .container-reservations td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+.container-reservations th {
+    background-color: #f4f4f4;
+}
+
+.container-reservations .estado {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.container-reservations .proceso {
+    background-color: orange;
+    color: white;
+}
+
+.container-reservations .finalizada {
+    background-color: gray;
+    color: white;
+}
+
+.container-reservations .btn-cancelar {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.container-reservations .btn-cancelar:hover {
+    background-color: darkred;
+}

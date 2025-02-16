@@ -30,3 +30,7 @@ def login():
 @blueprint.route("/register")
 def register():
    return render_template("register.html")
+
+@blueprint.route("/reservations")
+def reservations():
+    return render_template("reservations.html")
