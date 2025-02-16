@@ -10,6 +10,22 @@ import config.SecretConfig as secretconfig
 import model.model_tables as models
 import controller.Base_Controller as B_Controller
 
+general_keys=[ "id" ,"name","city", "price", "type", "capacity", "rooms_number",
+            "bathrooms_number", "bedrooms_number", "host_name","addressone",
+            "addresstwo","addresstree"]
+
+user_key=["name","password"]
+
+Review_key=["id_review","user_name","id_lodging","rating", "comment"]
+
+def dic_get(tuple,list_keys):
+    list_result_element=[]
+    keys=list_keys
+    for element in tuple:
+        list_result_element.append(dict(zip(keys,element)))  
+    return list_result_element
+
+
 
 class ControllerResult():
     def __init__(self):
@@ -37,7 +53,8 @@ class ControllerResult():
                 LEFT JOIN host h ON l.id = h.id_lodging
                 LEFT JOIN image i ON l.id = i.id_lodging;
                 """
-        return self._execute_query(query)
+        query_result=self._execute_query(query)
+        return dic_get(tuple=query_result,list_keys=general_keys)
     
     def FilterCityDate(self, city, initial_date, end_date):
         query = f"""SELECT 
@@ -51,7 +68,8 @@ class ControllerResult():
                     LEFT JOIN image i ON l.id = i.id_lodging
                     WHERE l.city = '{city}'  AND r.initial_date= '{initial_date}' AND r.end_date = '{end_date}';
                     """
-        return self._execute_query(query)
+        query_result=self._execute_query(query)
+        return dic_get(tuple=query_result,list_keys=general_keys)
     
     def Filterprice(self, price):
         query = f""" select  l.id,l.name,l.city, l.price,
@@ -63,7 +81,8 @@ class ControllerResult():
                     LEFT JOIN host h ON l.id = h.id_lodging
                     LEFT JOIN image i ON l.id = i.id_lodging
                     WHERE l.price = {price} """
-        return self._execute_query(query)
+        query_result=self._execute_query(query)
+        return dic_get(tuple=query_result,list_keys=general_keys)
     
     def filtertype(self, type):
         query = f""" 
@@ -76,17 +95,22 @@ class ControllerResult():
                     LEFT JOIN host h ON l.id = h.id_lodging
                     LEFT JOIN image i ON l.id = i.id_lodging
             WHERE l.type = '{type}' """
-        return self._execute_query(query)
+        query_result=self._execute_query(query)
+        return dic_get(tuple=query_result,list_keys=general_keys)
+    
     
     def filterUser(self, name):
         query = f""" SELECT * FROM users 
                     WHERE name = '{name}'"""
-        return self._execute_query(query, fetch_method="fetchone")
+        query_result=self._execute_query(query, fetch_method="fetchone")
+        return dic_get(tuple=query_result,list_keys=user_key)
 
+    
     def filter_Review(self,id_lodging):
         query = f""" SELECT * FROM  review 
                     WHERE id_lodging = '{id_lodging}'"""
-        return self._execute_query(query)
+        query_result=self._execute_query(query)
+        return dic_get(tuple=query_result,list_keys=Review_key)
 
 
 
@@ -94,6 +118,6 @@ class ControllerResult():
 #elementobusqueda = ControllerResult()
 #print(elementobusqueda.filterdefault())
 #print(elementobusqueda.FilterCityDate(city="Madrid", initial_date="2025-12-02", end_date="2025-12-02"))
-#print(elementobusqueda.Filterprice(price=150))
+#print(elementobusqueda.Filterprice(price=120))
 #print(elementobusqueda.filtertype(type="Casa"))
 #print(elementobusqueda.filter_Review(id_lodging=2))

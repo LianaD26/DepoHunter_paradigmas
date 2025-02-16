@@ -24,8 +24,9 @@ class Controllerhost:
     
     def PostDataHost(self,data):
         query = """INSERT INTO host (host_name,id_lodging) 
-                    VALUES %s"""
-        self.base_controller.PostTable(query, data)
+                    VALUES %s
+                    """
+        self.base_controller.PostTable(query, data,table_name="host")
 
 
 #ejemplofun=Controllerhost()

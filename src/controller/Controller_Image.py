@@ -27,8 +27,9 @@ class ControllerImage:
     def PostDataImage(self,data):
         query = """INSERT INTO Image (id_image,id_lodging,
                     addressone,addresstwo,addresstree) 
-                    VALUES %s"""
-        self.base_controller.PostTable(query, data)
+                    VALUES %s
+                    """
+        self.base_controller.PostTable(query, data,table_name="Image")
 
 #imagen_ejemplo=ControllerImage()
 #imagen_ejemplo.CreateTableImage()
