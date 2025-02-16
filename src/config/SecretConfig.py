@@ -1,5 +1,5 @@
-PGHOST='ep-super-smoke-a5082lrk-pooler.us-east-2.aws.neon.tech'
+PGHOST='ep-sweet-wildflower-a5iflnq0-pooler.us-east-2.aws.neon.tech'
 PGDATABASE='neondb'
-PGUSER='awitadelulo'
-PGPASSWORD='xc6I0JTaNdsr'
+PGUSER='neondb_owner'
+PGPASSWORD='npg_wy3WFm1TiQMU'
 PGPORT=5432

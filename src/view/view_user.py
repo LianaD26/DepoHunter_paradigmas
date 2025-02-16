@@ -24,12 +24,11 @@ instance_controller_Image.CreateTableImage()
 instance_controller_Lodging.CreateTableLodging()
 instance_controller_Reservation.CreateTableReservation()
 instance_controller_user.CreateTableUser()
-instance_controller_Review.CreateTableReview()
 
-instance_controller_host.PostDataHost(data="DepoHunter_paradigmas/src/utils/host_data.csv")
-instance_controller_Image.PostDataImage(data="DepoHunter_paradigmas/src/utils/urls.csv")
-instance_controller_Lodging.PostDataLodging(data="DepoHunter_paradigmas/src/utils/df_lodging.csv")
-instance_controller_Review.PostDataReview(data="DepoHunter_paradigmas/src/utils/sample_reviews.csv")
+instance_controller_host.PostDataHost(data="src/utils/host_data.csv")
+instance_controller_Image.PostDataImage(data="src/utils/urls.csv")
+instance_controller_Lodging.PostDataLodging(data="src/utils/df_lodging.csv")
+instance_controller_Review.PostDataReview(data="src/utils/sample_reviews.csv")
 
 
 blueprint = Blueprint( "view_user", __name__, template_folder="templates" )
@@ -63,8 +62,8 @@ def pago():
 def login():
    return render_template("login.html")
 
-@blueprint.route("/Register")
-def Register():
+@blueprint.route("/register")
+def register():
    return render_template("register.html")
 
 @blueprint.route("/reservations")
