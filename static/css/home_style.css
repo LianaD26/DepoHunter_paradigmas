@@ -334,6 +334,10 @@ input, select {
     margin-left: 40px;
     margin-right: 40px;
 }
+.comentario-card{
+    display: flex;
+    justify-content: flex-start;
+}
 .location{
     padding: 20px;
     margin-left: 40px;
