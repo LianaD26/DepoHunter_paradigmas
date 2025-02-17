@@ -56,20 +56,24 @@ class ControllerResult():
         query_result=self._execute_query(query)
         return dic_get(tuple=query_result,list_keys=general_keys)
     
+    
     def FilterCityDate(self, city, initial_date, end_date):
-        query = f"""SELECT 
-                    l.id,l.name, l.city, l.price,
-                    l.type, l.capacity, l.rooms_number,
-                    l.bathrooms_number, l.bedrooms_number,
-                    h.host_name, i.addressone, i.addresstwo, i.addresstree
-                    FROM lodging l
-                    LEFT JOIN reservation r ON l.id = r.id_lodging
-                    LEFT JOIN host h ON l.id = h.id_lodging
-                    LEFT JOIN image i ON l.id = i.id_lodging
-                    WHERE l.city = '{city}'  AND r.initial_date= '{initial_date}' AND r.end_date = '{end_date}';
-                    """
-        query_result=self._execute_query(query)
-        return dic_get(tuple=query_result,list_keys=general_keys)
+        query =f""" SELECT 
+                l.id, l.name, l.city, l.price,
+                l.type, l.capacity, l.rooms_number,
+                l.bathrooms_number, l.bedrooms_number,
+                h.host_name, i.addressone, i.addresstwo, i.addresstree
+                FROM lodging l
+                LEFT JOIN reservation r ON l.id = r.id_lodging
+                LEFT JOIN host h ON l.id = h.id_lodging
+                LEFT JOIN image i ON l.id = i.id_lodging
+                WHERE l.city = '{city}' AND '{initial_date}' > CURRENT_DATE   
+                AND (  COALESCE(r.end_date, '0001-01-01') <= '{initial_date}'  
+                OR COALESCE(r.initial_date, '9999-12-31') >= '{end_date}' );
+    """
+        query_result = self._execute_query(query)
+        return dic_get(tuple=query_result, list_keys=general_keys)
+    
     
     def Filterprice(self, price):
         query = f""" select  l.id,l.name,l.city, l.price,
@@ -98,7 +102,6 @@ class ControllerResult():
         query_result=self._execute_query(query)
         return dic_get(tuple=query_result,list_keys=general_keys)
     
-    
     def filterUser(self, name):
         query = f""" SELECT * FROM users 
                     WHERE name = '{name}'"""
@@ -115,9 +118,9 @@ class ControllerResult():
 
 
 # Ejemplo de uso
-elementobusqueda = ControllerResult()
+#elementobusqueda = ControllerResult()
 #print(elementobusqueda.filterdefault())
-#print(elementobusqueda.FilterCityDate(city="Madrid", initial_date="2025-12-02", end_date="2025-12-02"))
+#print(elementobusqueda.FilterCityDate(city="Bogotá", initial_date="2026-12-02", end_date="2029-12-02"))
 #print(elementobusqueda.Filterprice(price=120))
 #print(elementobusqueda.filtertype(type="Casa"))
-print(elementobusqueda.filter_Review(id_lodging=2))
+#print(elementobusqueda.filter_Review(id_lodging=2))
