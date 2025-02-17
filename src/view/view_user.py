@@ -2,7 +2,6 @@ from flask import Blueprint, render_template
 import sys
 import os
 sys.path.append("src")
-sys.path.append("DepoHunter_paradigmas/src")
 import controller.Controller_host as Controller_host
 import controller.Controller_Image as Controller_Image
 import controller.Controller_Lodging as  Controller_Lodging
