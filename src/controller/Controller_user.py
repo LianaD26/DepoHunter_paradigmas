@@ -35,7 +35,7 @@ class ControllerUser:
             self.base_controller.PostTableOneElement(query=query)
         
         except models.user_repeact as error_user_repeact:
-            print(error_user_repeact)
+            raise Exception("El nombre de usuario ya está registrado.")
         
 
 

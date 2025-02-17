@@ -40,8 +40,8 @@ class ControllerReview:
                 """
         self.base_controller.PostTableOneElement(query=query)
 
-#prueba_review=ControllerReview()
-#prueba_review.CreateTableReview()
+prueba_review=ControllerReview()
+prueba_review.CreateTableReview()
 #prueba_review.PostDataReview(data="DepoHunter_paradigmas/src/utils/sample_reviews.csv")
 #elemento_prueba=models.Review(id_review=90, user_name="pepito" ,id_lodging=2, rating=5, comment="beatiful")
 #prueba_review.PostTableUserOne(element=elemento_prueba)

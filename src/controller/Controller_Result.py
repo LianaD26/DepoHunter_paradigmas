@@ -105,8 +105,9 @@ class ControllerResult():
     def filterUser(self, name):
         query = f""" SELECT * FROM users 
                     WHERE name = '{name}'"""
-        query_result=self._execute_query(query, fetch_method="fetchone")
-        return dic_get(tuple=query_result,list_keys=user_key)
+        query_result = self._execute_query(query, fetch_method="fetchone")
+        
+        return query_result
 
     
     def filter_Review(self,id_lodging):

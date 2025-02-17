@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template,  request, redirect, url_for, flash, request
 import sys
 import os
 sys.path.append("src")
@@ -9,6 +9,7 @@ import controller.Controller_Reservation as Controller_Reservation
 import controller.Controller_Result as Controller_Result
 import controller.Controller_user as Controller_user
 import controller.Controller_Review as  Controller_Review
+from model.model_tables import User
 
 instance_controller_host=Controller_host.Controllerhost()
 instance_controller_Image=Controller_Image.ControllerImage()
@@ -58,9 +59,36 @@ def pago():
 def login():
    return render_template("login.html")
 
-@blueprint.route("/register")
+@blueprint.route("/register", methods=["GET", "POST"])
 def register():
-   return render_template("register.html")
+    try:
+        if request.method == "POST":
+            name = request.form.get("name")
+            password = request.form.get("password")
+            password_verification = request.form.get("password_verification")
+
+            if password != password_verification:
+                flash("Las contraseñas no coinciden.", "error")
+                return redirect(url_for("view_user.register"))
+            
+            user_check = instance_controller_Result.filterUser(name)
+            if user_check:
+                flash("El nombre de usuario ya está registrado.", "error")
+                return redirect(url_for("view_user.register"))
+
+            user = User(name, password)
+            user.validate_user()
+            instance_controller_user.PostTableUser(user)
+            flash("Usuario registrado con éxito.", "success")
+            return redirect(url_for("view_user.login"))
+
+        return render_template("register.html")
+    
+    except Exception as e:
+        flash(f"Error: {str(e)}", "error")
+        return redirect(url_for("view_user.register"))
+
+
 
 # datos de prueba para los estados reservado y finalizado
 reservas_proceso = [{'id':1, 'alojamiento':"uno", 'fecha_inicio':'26/11/2004', 'fecha_fin':'30/11/2004'}, {'id':2, 'alojamiento':"dos", 'fecha_inicio':'26/11/2004', 'fecha_fin':'30/11/2004'}]

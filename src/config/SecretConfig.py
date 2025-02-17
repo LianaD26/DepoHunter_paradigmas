@@ -1,5 +1,5 @@
-PGHOST='ep-sweet-wildflower-a5iflnq0-pooler.us-east-2.aws.neon.tech'
+PGHOST='ep-green-credit-a8zf81xd-pooler.eastus2.azure.neon.tech'
 PGDATABASE='neondb'
 PGUSER='neondb_owner'
-PGPASSWORD='npg_wy3WFm1TiQMU'
+PGPASSWORD='npg_3sFk2nAbWLcS'
 PGPORT=5432
