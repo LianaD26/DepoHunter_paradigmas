@@ -48,11 +48,8 @@ class User: #usuario
         
     @staticmethod
     def checkregister(consult):
-        if consult is None:
-            pass
-        else: 
-            raise user_repeact("Ya hay un usuario registrado con este usuario")
-            
+        if consult:
+            raise user_repeact("Ya hay un usuario registrado con este nombre.")
 
 
 class Reservation:

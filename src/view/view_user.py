@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template,  request, redirect, url_for, flash
 import sys
 import os
 sys.path.append("src")
@@ -9,6 +9,7 @@ import controller.Controller_Reservation as Controller_Reservation
 import controller.Controller_Result as Controller_Result
 import controller.Controller_user as Controller_user
 import controller.Controller_Review as  Controller_Review
+from model.model_tables import User
 
 instance_controller_host=Controller_host.Controllerhost()
 instance_controller_Image=Controller_Image.ControllerImage()
@@ -56,9 +57,39 @@ def pago():
 def login():
    return render_template("login.html")
 
-@blueprint.route("/register")
+@blueprint.route("/register", methods=["GET", "POST"])
 def register():
-   return render_template("register.html")
+    try:
+        if request.method == "POST":
+            name = request.form.get("name")
+            password = request.form.get("password")
+            password_verification = request.form.get("password_verification")
+
+            # Validar que las contraseñas coincidan
+            if password != password_verification:
+                flash("Las contraseñas no coinciden.", "error")
+                return redirect(url_for("view_user.register"))
+            
+            # Verificar si el nombre de usuario ya existe
+            user_check = instance_controller_Result.filterUser(name)
+            if user_check:
+                flash("El nombre de usuario ya está registrado.", "error")
+                return redirect(url_for("view_user.register"))
+
+            # Si no existe el usuario, registrarlo
+            user = User(name, password)
+            user.validate_user()
+            instance_controller_user.PostTableUser(user)
+            flash("Usuario registrado con éxito.", "success")
+            return redirect(url_for("view_user.login"))
+
+        return render_template("register.html")
+    
+    except Exception as e:
+        flash(f"Error: {str(e)}", "error")  # Solo se muestra el mensaje del error sin traceback
+        return redirect(url_for("view_user.register"))
+
+
 
 @blueprint.route("/reservations")
 def reservations():
