@@ -115,9 +115,9 @@ class ControllerResult():
 
 
 # Ejemplo de uso
-elementobusqueda = ControllerResult()
+#elementobusqueda = ControllerResult()
 #print(elementobusqueda.filterdefault())
 #print(elementobusqueda.FilterCityDate(city="Madrid", initial_date="2025-12-02", end_date="2025-12-02"))
 #print(elementobusqueda.Filterprice(price=120))
 #print(elementobusqueda.filtertype(type="Casa"))
-print(elementobusqueda.filter_Review(id_lodging=2))
+#print(elementobusqueda.filter_Review(id_lodging=2))

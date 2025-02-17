@@ -40,11 +40,14 @@ def home():
 
 @blueprint.route("/alojamiento/<int:id>")
 def alojamiento_detalle(id):
+    comment=instance_controller_Result.filter_Review(id_lodging=id)
     alojamientos=instance_controller_Result.filterdefault()
+    
     alojamiento = next((a for a in alojamientos if a["id"] == id), None)
     if alojamiento is None:
         return "Alojamiento no encontrado", 404
-    return render_template("detail.html", alojamiento=alojamiento)
+    
+    return render_template("detail.html", alojamiento=alojamiento,comments=comment)
 
 
 @blueprint.route('/pago')
