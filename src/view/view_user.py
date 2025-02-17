@@ -67,18 +67,15 @@ def register():
             password = request.form.get("password")
             password_verification = request.form.get("password_verification")
 
-            # Validar que las contraseñas coincidan
             if password != password_verification:
                 flash("Las contraseñas no coinciden.", "error")
                 return redirect(url_for("view_user.register"))
             
-            # Verificar si el nombre de usuario ya existe
             user_check = instance_controller_Result.filterUser(name)
             if user_check:
                 flash("El nombre de usuario ya está registrado.", "error")
                 return redirect(url_for("view_user.register"))
 
-            # Si no existe el usuario, registrarlo
             user = User(name, password)
             user.validate_user()
             instance_controller_user.PostTableUser(user)
@@ -88,7 +85,7 @@ def register():
         return render_template("register.html")
     
     except Exception as e:
-        flash(f"Error: {str(e)}", "error")  # Solo se muestra el mensaje del error sin traceback
+        flash(f"Error: {str(e)}", "error")
         return redirect(url_for("view_user.register"))
 
 
