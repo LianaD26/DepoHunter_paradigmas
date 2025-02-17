@@ -9,9 +9,9 @@
         {% for alojamiento in alojamientos %}
             <div class="alojamiento-card">
                 <a href="{{ url_for('view_user.alojamiento_detalle', id=alojamiento.id) }}">
-                    <img src="{{ alojamiento.imagen }}" alt="{{ alojamiento.nombre }}">
-                    <h3>{{ alojamiento.nombre }}</h3>
-                    <p>Precio: ${{ alojamiento.precio }} por noche</p>
+                    <img src="{{ alojamiento.addressone }}" alt="{{ alojamiento.name }}">
+                    <h3>{{ alojamiento.name }}</h3>
+                    <p>Precio: ${{ alojamiento.price}} por noche</p>
                 </a>
             </div>
         {% endfor %}
