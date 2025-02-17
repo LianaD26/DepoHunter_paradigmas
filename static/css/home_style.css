@@ -84,9 +84,17 @@ a:visited{
     margin-right: 40px;
 }
 
+form .btn-filter-lodgings{
+    height: auto; /* Asegura que no se expanda */
+    padding: 5px 10px; 
+    margin-top: 15px;
+    color: red;
+}
+
 .navbar-secundario input:focus{
     border: 2px solid black;
 }
+
 
 /* Contenido Principal */
 .contenido {
@@ -378,7 +386,7 @@ input, select {
     font-family: Arial, sans-serif;
 }
 
-.container-reservations h2, .container-reservations  h4 {
+.container-reservations  h4 {
     color: #333;
 }
 
@@ -422,8 +430,11 @@ input, select {
     padding: 8px 12px;
     cursor: pointer;
     border-radius: 5px;
+    font-size: 15px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .container-reservations .btn-cancelar:hover {
     background-color: darkred;
 }
+

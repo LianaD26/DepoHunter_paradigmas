@@ -25,9 +25,16 @@
 
     <!-- Navbar Secundario -->
     <nav class="navbar-secundario">
-        <input type="text" placeholder="Buscar..." class="search-box">
+        <input type="text" placeholder="Buscar..." class="search-box" id="city" name="city">
         <input type="text" id="datepicker" placeholder="Selecciona las fechas...">
-        <div id="resultado"></div>
+    
+        <form id="filter-form" action="{{ url_for('view_user.main_filter_lodgings') }}" method="POST">
+            <input type="hidden" name="city" id="form-city">
+            <input type="hidden" name="initial_date" id="form-initial-date">
+            <input type="hidden" name="end_date" id="form-end-date">
+            
+            <button type="submit" class="btn-filter-lodgings"><strong>Buscar</strong></button>
+        </form>
     </nav>
 
     <!-- Bloque de contenido que se reemplazará en otras páginas -->

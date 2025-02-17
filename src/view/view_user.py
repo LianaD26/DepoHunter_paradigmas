@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request
 import sys
 import os
 sys.path.append("src")
@@ -40,12 +40,14 @@ def home():
 
 @blueprint.route("/alojamiento/<int:id>")
 def alojamiento_detalle(id):
+    comment=instance_controller_Result.filter_Review(id_lodging=id)
     alojamientos=instance_controller_Result.filterdefault()
+    
     alojamiento = next((a for a in alojamientos if a["id"] == id), None)
     if alojamiento is None:
         return "Alojamiento no encontrado", 404
-    return render_template("detail.html", alojamiento=alojamiento)
-
+    
+    return render_template("detail.html", alojamiento=alojamiento,comments=comment)
 
 @blueprint.route('/pago')
 def pago():
@@ -60,6 +62,34 @@ def login():
 def register():
    return render_template("register.html")
 
+# datos de prueba para los estados reservado y finalizado
+reservas_proceso = [{'id':1, 'alojamiento':"uno", 'fecha_inicio':'26/11/2004', 'fecha_fin':'30/11/2004'}, {'id':2, 'alojamiento':"dos", 'fecha_inicio':'26/11/2004', 'fecha_fin':'30/11/2004'}]
+reservas_finalizadas = [{'id':3, 'alojamiento':"tres", 'fecha_inicio':'26/11/2004', 'fecha_fin':'30/11/2004'}, {'id':4, 'alojamiento':"cuatro", 'fecha_inicio':'26/11/2004', 'fecha_fin':'30/11/2004'}]
+
 @blueprint.route("/reservations")
 def reservations():
-   return render_template("reservations.html")
+   
+   return render_template("reservations.html", reservas_proceso= reservas_proceso, reservas_finalizadas=reservas_finalizadas)
+
+@blueprint.route('/reservations/<int:reserva_id>', methods=['POST'])
+def cancel_reservation(reserva_id):
+   # Llamar la función que cancela la reserva en la base de datos
+   #cancelar_reserva(reserva_id)  # Implementa esta función en tu backend
+
+   # Mensaje de éxito (opcional)
+
+   # Redirigir a la vista de reservas del usuario
+
+   return render_template("reservations.html", reservas_proceso= reservas_proceso, reservas_finalizadas=reservas_finalizadas)
+
+@blueprint.route("/lodgings", methods=["GET", "POST"])
+def main_filter_lodgings():
+    # Obtener los valores del formulario
+    city = request.form.get("city")
+    initial_date = request.form.get("initial_date")
+    end_date = request.form.get("end_date")
+
+    # Llamar la función que filtra los alojamientos
+    new_lodgings = instance_controller_Result.FilterCityDate(city, initial_date, end_date)
+
+    return render_template("home.html", alojamientos=new_lodgings)
