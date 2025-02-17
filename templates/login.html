@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container">
+        <h2>Iniciar Sesión</h2>
+        <form action="/login" method="POST">
+            <input type="text" name="username" placeholder="Usuario" required>
+            <input type="password" name="password" placeholder="Contraseña" required>
+            <a href="{{ url_for('view_user.reservations') }}" style="color: white;" class="btn-login-user"><strong>Ingresar</strong></a>
+        </form>
+        <p>¿No tienes cuenta? <strong><a href="{{ url_for('view_user.register') }}" style="color: #007bff;">Regístrate</a></strong></p>
+    </div>
+{% endblock %}

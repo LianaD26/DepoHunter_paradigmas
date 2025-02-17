@@ -22,7 +22,7 @@ class ControllerLodging:
                     name varchar(50) NOT NULL,
                     city varchar(50) NOT NULL,
                     price int NOT NULL,
-                    type lodging_type NOT NULL,  
+                    type varchar(50) NOT NULL,  
                     capacity int NOT NULL,
                     rooms_number int NOT NULL,
                     bathrooms_number int NOT NULL,
