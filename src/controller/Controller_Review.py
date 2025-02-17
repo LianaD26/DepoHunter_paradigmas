@@ -24,10 +24,11 @@ class ControllerReview:
                 );"""
         self.base_controller.CreateTable(query=query)
     
-    def PostTableUser(self, data):
+    def PostDataReview(self, data):
         query = """INSERT INTO review ( id_review,user_name ,id_lodging, rating, comment) 
-                    VALUES %s"""
-        self.base_controller.PostTable(query, data)
+                    VALUES %s
+                    """
+        self.base_controller.PostTable(query, data,table_name="review")
     
 
     def PostTableUserOne(self,element):
@@ -40,8 +41,8 @@ class ControllerReview:
         self.base_controller.PostTableOneElement(query=query)
 
 #prueba_review=ControllerReview()
-#prueba_review.CreateTableUser()
-#prueba_review.PostTableUser(data="DepoHunter_paradigmas/src/utils/sample_reviews.csv")
+#prueba_review.CreateTableReview()
+#prueba_review.PostDataReview(data="DepoHunter_paradigmas/src/utils/sample_reviews.csv")
 #elemento_prueba=models.Review(id_review=90, user_name="pepito" ,id_lodging=2, rating=5, comment="beatiful")
 #prueba_review.PostTableUserOne(element=elemento_prueba)
 

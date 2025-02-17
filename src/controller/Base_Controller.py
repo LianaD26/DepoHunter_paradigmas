@@ -33,12 +33,15 @@ class BaseController:
         self.connection.commit()
         cursor_lodging.close()
     
-    def PostTable(self, query, data):
+    def PostTable(self,query, data,table_name):
         data_frame = pd.read_csv(data)
         cursor_lodging = self.connection.cursor()
-        data_tuples = list(data_frame.itertuples(index=False, name=None))
-        execute_values(cursor_lodging, query, data_tuples)
-        self.connection.commit()
+        cursor_lodging.execute(f"SELECT COUNT(*) FROM {table_name}")
+        count = cursor_lodging.fetchone()[0]
+        if count == 0:
+            data_tuples = list(data_frame.itertuples(index=False, name=None))
+            execute_values(cursor_lodging, query, data_tuples)
+            self.connection.commit()
         cursor_lodging.close()
     
     def PostTableOneElement(self, query):

@@ -32,11 +32,12 @@ class ControllerLodging:
         self.base_controller.CreateTable(query)
 
     
-    def PostTableLodging(self, data):
+    def PostDataLodging(self, data):
         query = """INSERT INTO lodging (name, city, price, 
                     type, capacity, rooms_number, bathrooms_number, bedrooms_number) 
-                    VALUES %s"""
-        self.base_controller.PostTable(query, data)
+                    VALUES %s
+                    """
+        self.base_controller.PostTable(query, data,table_name="lodging")
 
 
 
