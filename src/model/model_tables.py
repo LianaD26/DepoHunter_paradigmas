@@ -99,3 +99,11 @@ class Review:
         
         if len(self.comment) > 100:
             raise EmptyCommentError("Comment cannot exceed 500 characters.")
+    
+    def calculate_Start(query):
+        sum=0
+        for result in query:
+            sum += query.rating
+        averange=round(sum/len(query),0)
+        return  #### esta esta pendiente para revisar 
+            

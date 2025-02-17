@@ -31,4 +31,4 @@ class Controllerhost:
 
 #ejemplofun=Controllerhost()
 #ejemplofun.CreateTableHost()
-#ejemplofun.PostDataHost(data="DepoHunter_paradigmas/src/utils/host_data.csv")
+#ejemplofun.PostDataHost(data="src/utils/host_data.csv")
