@@ -4,7 +4,7 @@ from psycopg2.extras import execute_values
 import sys
 import os
 import pandas as pd
-sys.path.append("DepoHunter_paradigmas/src")
+sys.path.append("src")
 import config.SecretConfig as secretconfig
 import model.model_tables as models
 import controller.Base_Controller as B_Controller

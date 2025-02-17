@@ -52,6 +52,7 @@ class User: #usuario
             pass
         else: 
             raise user_repeact("Ya hay un usuario registrado con este usuario")
+            
 
 
 class Reservation:
