@@ -12,23 +12,29 @@ import controller.Base_Controller as B_Controller
 
 class ControllerReservation:
     def __init__(self):
-        self.base_controller= B_Controller.BaseController()
+        self.base_controller = B_Controller.BaseController()
 
     def CreateTableReservation(self):
-        query="""CREATE TABLE IF NOT EXISTS reservation( 
+        query = """
+        CREATE TABLE IF NOT EXISTS reservation( 
             id_reservation SERIAL PRIMARY KEY,
             id_lodging INT NOT NULL,
             initial_date DATE NOT NULL,
             end_date DATE NOT NULL
-        );"""
+        );
+        """
         self.base_controller.CreateTable(query=query)
 
-    def PostTableReservation(self,element):
-        query=f""" insert into reservation(id_lodging,initial_date, end_date)
-                    values({element.id_lodging},'{element.initial_date}','{(element.end_date)}'
-                    );
+    def PostTableReservation(self, element):
+        query = f"""
+        INSERT INTO reservation(id_lodging, initial_date, end_date)
+        VALUES({element.id_lodging}, '{element.initial_date}', '{element.end_date}');
         """
         self.base_controller.PostTableOneElement(query=query)
+
+    def CancelReservation(self, reserva_id):
+        query = f"DELETE FROM reservation WHERE id_reservation = {reserva_id};"
+        self.base_controller.ExecuteQuery(query=query)
     
     
 

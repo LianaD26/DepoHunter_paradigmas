@@ -128,6 +128,26 @@ class ControllerResult():
                     WHERE id_lodging = '{id_lodging}'"""
         query_result=self._execute_query(query)
         return dic_get(tuple=query_result,list_keys=Review_key)
+    
+    def filter_reservas_proceso(self):
+        query = """
+        SELECT id_reservation, id_lodging, initial_date, end_date 
+        FROM reservation
+        WHERE end_date >= CURRENT_DATE;
+        """
+        result = self.base_controller.ExecuteQuery(query=query)
+        reservas_proceso = [{"id": row[0], "alojamiento": row[1], "fecha_inicio": row[2], "fecha_fin": row[3]} for row in result]
+        return reservas_proceso
+
+    def filter_reservas_finalizadas(self):
+        query = """
+        SELECT id_reservation, id_lodging, initial_date, end_date 
+        FROM reservation
+        WHERE end_date < CURRENT_DATE;
+        """
+        result = self.base_controller.ExecuteQuery(query=query)
+        reservas_finalizadas = [{"id": row[0], "alojamiento": row[1], "fecha_inicio": row[2], "fecha_fin": row[3]} for row in result]
+        return reservas_finalizadas
 
 
 

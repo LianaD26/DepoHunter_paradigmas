@@ -10,6 +10,7 @@ import controller.Controller_user as Controller_user
 import controller.Controller_Review as  Controller_Review
 import model.model_tables as models
 from model.model_tables import User
+from datetime import datetime
 
 instance_controller_host=Controller_host.Controllerhost()
 instance_controller_Image=Controller_Image.ControllerImage()
@@ -62,9 +63,41 @@ def alojamiento_detalle(id):
 
     return render_template("detail.html", alojamiento=alojamiento, comments=comment, averange=averange)
 
-@blueprint.route('/pago')
-def pago():
-   return render_template('pago.html')
+@blueprint.route('/alojamiento/<int:id>/pago', methods=['POST'])
+def pago(id):
+    try:
+        initial_date = request.form.get("fecha_inicio")
+        end_date = request.form.get("fecha_fin")
+        
+        return render_template('pago.html', id=id, initial_date=initial_date, end_date=end_date)
+    
+    except Exception as e:
+        flash(f"Error: {str(e)}", "error")
+        return redirect(url_for("view_user.alojamiento_detalle", id=id))
+
+@blueprint.route('/alojamiento/<int:id>/confirmar_pago', methods=['POST'])
+def confirmar_pago(id):
+    try:
+        initial_date = request.form.get("initial_date")
+        end_date = request.form.get("end_date")
+        banco = request.form.get("banco")
+        tarjeta = request.form.get("tarjeta")
+        cvv = request.form.get("cvv")
+        
+        initial_date = datetime.strptime(initial_date, '%Y-%m-%d')
+        end_date = datetime.strptime(end_date, '%Y-%m-%d')
+        
+        # Lógica para guardar la reserva en la base de datos
+        reservation = models.Reservation(id_reservation=None, id_lodging=id, initial_date=initial_date, end_date=end_date)
+        instance_controller_Reservation.PostTableReservation(reservation)
+        
+        flash("Reserva realizada con éxito.", "success")
+        return redirect(url_for("view_user.alojamiento_detalle", id=id))
+    
+    except Exception as e:
+        flash(f"Error: {str(e)}", "error")
+        return redirect(url_for("view_user.alojamiento_detalle", id=id))
+
 
 
 @blueprint.route("/login", methods=["GET", "POST"])
@@ -111,26 +144,36 @@ def register():
         return redirect(url_for("view_user.register"))
 
 
-
-# datos de prueba para los estados reservado y finalizado
-reservas_proceso = [{'id':1, 'alojamiento':"uno", 'fecha_inicio':'26/11/2004', 'fecha_fin':'30/11/2004'}, {'id':2, 'alojamiento':"dos", 'fecha_inicio':'26/11/2004', 'fecha_fin':'30/11/2004'}]
-reservas_finalizadas = [{'id':3, 'alojamiento':"tres", 'fecha_inicio':'26/11/2004', 'fecha_fin':'30/11/2004'}, {'id':4, 'alojamiento':"cuatro", 'fecha_inicio':'26/11/2004', 'fecha_fin':'30/11/2004'}]
-
 @blueprint.route("/reservations")
 def reservations():
-   
-   return render_template("reservations.html", reservas_proceso= reservas_proceso, reservas_finalizadas=reservas_finalizadas)
+    try:
+        # Obtener las reservas en proceso y finalizadas del controlador
+        reservas_proceso = instance_controller_Result.filter_reservas_proceso()  # Implementa esta función
+        reservas_finalizadas = instance_controller_Result.filter_reservas_finalizadas()  # Implementa esta función
+        
+        return render_template("reservations.html", reservas_proceso=reservas_proceso, reservas_finalizadas=reservas_finalizadas)
+    
+    except Exception as e:
+        flash(f"Error: {str(e)}", "error")
+        return redirect(url_for("view_user.home"))
+
 
 @blueprint.route('/reservations/<int:reserva_id>', methods=['POST'])
 def cancel_reservation(reserva_id):
-   # Llamar la función que cancela la reserva en la base de datos
-   #cancelar_reserva(reserva_id)  # Implementa esta función en tu backend
+    try:
+        # Llamar la función que cancela la reserva en la base de datos
+        instance_controller_Reservation.CancelReservation(reserva_id)
+        
+        # Mensaje de éxito
+        flash("Reserva cancelada con éxito.", "success")
+        
+        # Redirigir a la vista de reservas del usuario
+        return redirect(url_for("view_user.reservations"))
+    
+    except Exception as e:
+        flash(f"Error: {str(e)}", "error")
+        return redirect(url_for("view_user.reservations"))
 
-   # Mensaje de éxito (opcional)
-
-   # Redirigir a la vista de reservas del usuario
-
-   return render_template("reservations.html", reservas_proceso= reservas_proceso, reservas_finalizadas=reservas_finalizadas)
 
 @blueprint.route("/lodgings", methods=["GET", "POST"])
 def main_filter_lodgings():
@@ -160,3 +203,23 @@ def filters_lodgings():
         precio_max = int(precio_max)
         new_lodgings = instance_controller_Result.Filterprice(precio_max)
     return render_template('home.html', alojamientos=new_lodgings)
+@blueprint.route("/alojamiento/<int:id>/reservar", methods=["POST"])
+def make_reservation(id):
+    try:
+        initial_date = request.form.get("fecha_inicio")
+        end_date = request.form.get("fecha_fin")
+        
+        initial_date = datetime.strptime(initial_date, '%Y-%m-%d')
+        end_date = datetime.strptime(end_date, '%Y-%m-%d')
+        
+        reservation = models.Reservation(id_reservation=None, id_lodging=id, initial_date=initial_date, end_date=end_date)
+        
+        # Save reservation in the DB
+        instance_controller_Reservation.PostTableReservation(reservation)
+        
+        flash("Reserva realizada con éxito.", "success")
+        return redirect(url_for("view_user.alojamiento_detalle", id=id))
+    
+    except Exception as e:
+        flash(f"Error: {str(e)}", "error")
+        return redirect(url_for("view_user.alojamiento_detalle", id=id))

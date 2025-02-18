@@ -2,63 +2,71 @@
 
 {% block content %}
 
-    <h1>{{ alojamiento.nombre }}</h1>
-    <br>
+<h1>{{ alojamiento.nombre }}</h1>
+<br>
 
-    <div class="alojamiento-detalle">
-        <!-- Columna Izquierda: Slider -->
-        <div class="columna-izquierda">
-            <div class="swiper mySwiper">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide"><img src="{{ alojamiento.addressone }}" alt="Imagen 1"></div>
-                    <div class="swiper-slide"><img src="{{ alojamiento.addresstwo }}" alt="Imagen 2"></div>
-                    <div class="swiper-slide"><img src="{{ alojamiento.addresstree}}" alt="Imagen 3"></div>
-                </div>
-                <!-- Botones de navegación -->
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
-                <!-- Paginación -->
-                <div class="swiper-pagination"></div>
+<div class="alojamiento-detalle">
+    <!-- Columna Izquierda: Slider -->
+    <div class="columna-izquierda">
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="{{ alojamiento.addressone }}" alt="Imagen 1"></div>
+                <div class="swiper-slide"><img src="{{ alojamiento.addresstwo }}" alt="Imagen 2"></div>
+                <div class="swiper-slide"><img src="{{ alojamiento.addresstree}}" alt="Imagen 3"></div>
             </div>
+<<<<<<< HEAD
             <div style="text-align: center;">
                 <p><strong>Capacidad:</strong> {{alojamiento.capacity}}
                 <strong>- Baños:</strong> {{alojamiento.bathrooms_number}}
                 <strong>- Cuartos:</strong> {{alojamiento.rooms_number}}
                 <strong>- Camas:</strong> {{alojamiento.bedrooms_number}}
             </div>
+=======
+            <!-- Botones de navegación -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <!-- Paginación -->
+            <div class="swiper-pagination"></div>
+>>>>>>> 5d2c944 (Guardando cambios antes de pull)
         </div>
+        <p><strong>Capacidad:</strong> {{alojamiento.capacity}}
+        <strong>- Baños:</strong> {{alojamiento.bathrooms_number}}
+        <strong>- Cuartos:</strong> {{alojamiento.rooms_number}}
+        <strong>- Camas:</strong> {{alojamiento.bedrooms_number}}
+    </div>
 
-        <!-- Columna Derecha: Información -->
-        <div class="columna-derecha">
-            <div class="info-alojamiento">
-                <h2>Calificación promedio: </h2>
-                <div class="rating">
-                    {{ '★' * averange }}{{ '☆' * (5 - averange) }}
-                </div>
-                
-                <h2>${{alojamiento.price}}</h2>
-                <h3>precio por noche</h3>
+    <!-- Columna Derecha: Información -->
+    <div class="columna-derecha">
+        <div class="info-alojamiento">
+            <h2>Calificación promedio: </h2>
+            <div class="rating">
+                {{ '★' * averange }}{{ '☆' * (5 - averange) }}
             </div>
-            
+            <br><br>
+            <h2>${{alojamiento.price}}</h2>
+            <h3>precio por noche</h3>
+            <br>
+        </div>
+        <br>
+        <form action="{{ url_for('view_user.pago', id=alojamiento.id) }}" method="post">
             <div class="fechas-reserva">
                 <div class="fecha-izquierda">
                     <strong>Fecha inicio</strong><br>
-                    <input type="date" id="fecha-inicio" required>
+                    <input type="date" name="fecha_inicio" id="fecha-inicio" required>
                 </div>
                 <div class="fecha-derecha">
                     <strong>Fecha fin</strong><br>
-                    <input type="date" id="fecha-fin" required>
+                    <input type="date" name="fecha_fin" id="fecha-fin" required>
                 </div>
             </div>
             <br><br>
-            <div style="text-align: center;">
-                <strong>Total a pagar: $1.500.000</strong><br>
-                5 noches<br><br><br>
-                <!-- Botón de pago -->
-                <a href="{{ url_for('view_user.pago') }}" class="btn-reserva">Reservar</a>
-            </div>
-        </div>
+            <strong>Total a pagar: $1.500.000</strong><br>
+            5 noches<br>
+            <button type="submit" class="btn-reserva">Reservar</button>
+        </form>
+        
     </div>
+</div>
 
     <!-- 🔹 Sección de Comentarios -->
     <div class="comentarios">
@@ -113,5 +121,11 @@
     </div>
     <br><br><br>
     
+
+<div class="comunicacion-host">
+    <h3 style="text-align: left;">Comunícate con el anfitrión:</h3>
+    <textarea id="mensaje-host" placeholder="Escribe tu mensaje..." rows="3"></textarea>
+    <button class="btn-enviar-host"><strong>Publicar</strong></button>   
+</div>
 
 {% endblock %}

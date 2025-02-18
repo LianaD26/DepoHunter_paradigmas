@@ -62,8 +62,8 @@ class Reservation:
     def __init__(self, id_reservation, id_lodging, initial_date, end_date):
         self.id_reservation = id_reservation
         self.id_lodging = id_lodging
-        self.initial_date = datetime.strptime(initial_date, '%Y-%m-%d')
-        self.end_date = datetime.strptime(end_date, '%Y-%m-%d')
+        self.initial_date = initial_date
+        self.end_date = end_date
 
 
 class Image:
@@ -115,4 +115,5 @@ class Review:
             return  int(averange)
         except ZeroDivisionError as div_zero:
             return 0
+
 

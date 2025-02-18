@@ -9,4 +9,4 @@ app.secret_key = os.urandom(24)
 app.register_blueprint(view_user.blueprint)
 
 if __name__=='__main__':
-   app.run( debug=True )
+   app.run( debug=True)

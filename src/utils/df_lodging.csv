@@ -1,8 +1,8 @@
 name,city,price,type,capacity,rooms_number,bathrooms_number,bedrooms_number
-Apartamento Moderno,Bogotá,120,Apartamento,4,2,2,2
+Apartamento Moderno,Bogota,120,Apartamento,4,2,2,2
 Casa Moderna,Cartagena,250,Casa,8,4,3,4
 Apartamento,Armenia,90, Apartamento,6,3,2,3
-Loft Lujoso,Medellín,180,Casa,2,1,1,1
+Loft Lujoso,Medellin,180,Casa,2,1,1,1
 Villa Marítima,Santa Marta,300,Apartamento,10,5,4,5
 Habitacion Moderna, Villavicencio,140,Casa de huespedes,6,3,2,3
 Casa Exclusiva en la playa,Cali,275,Apartamento,5,4,3,4
@@ -23,4 +23,4 @@ Habitacion Romántica,Cúcuta,130,Casa de huespedes,8,4,2,4
 Penthouse del Río,Ibagué,190,Casa,7,3,2,3
 EcoLodge Selva, Montería,350,Apartamento,20,10,8,9
 Casa Mirador,Manizales,280,Casa,6,3,2,3
-Glamping Estelar,Boyacá,140,Apartamento,4,2,1,2
+Glamping Estelar,Boyaca,140,Apartamento,4,2,1,2
