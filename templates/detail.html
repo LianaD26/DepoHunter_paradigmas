@@ -31,11 +31,7 @@
             <div class="info-alojamiento">
                 <h2>Calificación promedio: </h2>
                 <div class="rating">
-                    <span class="star" data-value="1">★</span>
-                    <span class="star" data-value="2">★</span>
-                    <span class="star" data-value="3">★</span>
-                    <span class="star" data-value="4">★</span>
-                    <span class="star" data-value="5">★</span>
+                {{ '★' * averange }}{{ '☆' * (5 - averange) }}
                 </div>
                 <br><br>
                 <h2>${{alojamiento.price}}</h2> precio por noche

@@ -51,6 +51,12 @@ class User: #usuario
         if consult:
             raise user_repeact("Ya hay un usuario registrado con este nombre.")
 
+    def checkpassword(consult,password):
+        if consult["password"]==password:
+            return True
+        else :
+            return False
+
 
 class Reservation:
     def __init__(self, id_reservation, id_lodging, initial_date, end_date):
@@ -101,9 +107,12 @@ class Review:
             raise EmptyCommentError("Comment cannot exceed 500 characters.")
     
     def calculate_Start(query):
-        sum=0
-        for result in query:
-            sum += query.rating
-        averange=round(sum/len(query),0)
-        return  #### esta esta pendiente para revisar 
-            
+        try: 
+            sum=0
+            for result in query:
+                sum += result["rating"]
+            averange=round(sum/len(query),0)
+            return  int(averange)
+        except ZeroDivisionError as div_zero:
+            return 0
+

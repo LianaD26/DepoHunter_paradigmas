@@ -9,6 +9,7 @@ import controller.Controller_Reservation as Controller_Reservation
 import controller.Controller_Result as Controller_Result
 import controller.Controller_user as Controller_user
 import controller.Controller_Review as  Controller_Review
+import model.model_tables as models
 from model.model_tables import User
 
 instance_controller_host=Controller_host.Controllerhost()
@@ -47,8 +48,8 @@ def alojamiento_detalle(id):
     alojamiento = next((a for a in alojamientos if a["id"] == id), None)
     if alojamiento is None:
         return "Alojamiento no encontrado", 404
-    
-    return render_template("detail.html", alojamiento=alojamiento,comments=comment)
+    averange=models.Review.calculate_Start(comment)
+    return render_template("detail.html", alojamiento=alojamiento,comments=comment,averange=averange)
 
 @blueprint.route('/pago')
 def pago():
@@ -58,6 +59,8 @@ def pago():
 @blueprint.route("/login")
 def login():
    return render_template("login.html")
+
+
 
 @blueprint.route("/register", methods=["GET", "POST"])
 def register():
