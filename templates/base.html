@@ -18,8 +18,16 @@
             <h1><a href="{{ url_for('view_user.home') }}">DepoHunter</a></h1>
         </div>
         <div class="navbar-enlaces">
-            <a href="{{ url_for('view_user.login') }}">Iniciar Sesión</a>
-            <a href="{{ url_for('view_user.register') }}">Registro</a>
+            {% if 'username' in session %}
+                <a href="{{ url_for('view_user.reservations') }}" class="username-link">
+                    <span class="username-navbar">👤{{ session['username'] }}</span>
+                </a>
+                
+                <a class="btn-logout" href="{{ url_for('view_user.logout') }}">Cerrar Sesión</a>
+            {% else %}
+                <a class="btn-login" href="{{ url_for('view_user.login') }}">Iniciar Sesión</a>
+                <a class="btn-register" href="{{ url_for('view_user.register') }}">Registro</a>
+            {% endif %}
         </div>
     </nav>
 
