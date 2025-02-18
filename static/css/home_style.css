@@ -42,7 +42,7 @@ a:visited{
     align-items: center;
 }
 
-.navbar-enlaces a {
+.navbar-enlaces .btn-register, .navbar-enlaces .btn-login {
     text-decoration: none;
     margin-left: 20px;
     margin-right: 48px;
@@ -54,10 +54,35 @@ a:visited{
     border-radius: 20px;
 }
 
-.navbar-enlaces a:hover{
+.navbar-enlaces .btn-register:hover, .navbar-enlaces .btn-login:hover{
     box-shadow: 0px 4px 10px rgb(0, 184, 255);
 }
-
+.username-navbar {
+    font-size: 24px;
+    box-shadow: 2px 2px 10px rgb(0, 184, 255);
+    border-radius: 20px;
+    height: 40px;
+    width: 120px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.username-link {
+    text-decoration: none; 
+    color: inherit; /* Usa el color del texto original */
+}
+.btn-logout{
+    font-size: 18px;
+    text-decoration: none;
+    margin-left: 20px;
+    margin-right: 48px;
+    font-weight: bold;
+    color: black;
+    padding: 5px 10px;
+    transition: box-shadow 0.3s ease;
+    border-radius: 20px;
+}
 /* Navbar Secundario */
 .navbar-secundario {
     background-color: rgb(85, 207, 255);
