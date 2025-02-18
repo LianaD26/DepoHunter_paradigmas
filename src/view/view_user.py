@@ -150,7 +150,7 @@ def register():
 @blueprint.route("/reservations")
 def reservations():
     try:
-        # Obtener las reservas en proceso y finalizadas del controlador
+        #Obtener las reservas en proceso y finalizadas del controlador
         reservas_proceso = instance_controller_Result.filter_reservas_proceso()  # Implementa esta función
         reservas_finalizadas = instance_controller_Result.filter_reservas_finalizadas()  # Implementa esta función
         
@@ -158,7 +158,7 @@ def reservations():
     
     except Exception as e:
         flash(f"Error: {str(e)}", "error")
-        return redirect(url_for("view_user.home"))
+    return redirect(url_for("view_user.home"))
 
 
 @blueprint.route('/reservations/<int:reserva_id>', methods=['POST'])

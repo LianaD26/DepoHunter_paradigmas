@@ -135,7 +135,7 @@ class ControllerResult():
         FROM reservation
         WHERE end_date >= CURRENT_DATE;
         """
-        result = self.base_controller.ExecuteQuery(query=query)
+        result = self._execute_query(query=query)
         reservas_proceso = [{"id": row[0], "alojamiento": row[1], "fecha_inicio": row[2], "fecha_fin": row[3]} for row in result]
         return reservas_proceso
 
@@ -145,7 +145,7 @@ class ControllerResult():
         FROM reservation
         WHERE end_date < CURRENT_DATE;
         """
-        result = self.base_controller.ExecuteQuery(query=query)
+        result = self._execute_query(query=query)
         reservas_finalizadas = [{"id": row[0], "alojamiento": row[1], "fecha_inicio": row[2], "fecha_fin": row[3]} for row in result]
         return reservas_finalizadas
 
