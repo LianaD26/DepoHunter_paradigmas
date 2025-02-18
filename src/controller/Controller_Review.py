@@ -25,23 +25,22 @@ class ControllerReview:
         self.base_controller.CreateTable(query=query)
     
     def PostDataReview(self, data):
-        query = """INSERT INTO review ( id_review,user_name ,id_lodging, rating, comment) 
+        query = """INSERT INTO review ( user_name ,id_lodging, rating, comment) 
                     VALUES %s
                     """
         self.base_controller.PostTable(query, data,table_name="review")
-    
+
 
     def PostTableUserOne(self,element):
-        query=f""" insert into review( id_review, user_name ,id_lodging, rating, comment)
+        query=f""" insert into review(user_name ,id_lodging, rating, comment)
                     values
-                    ({element.id_review}, '{element.user_name}',
-                    {element.id_lodging},{element.rating},
+                    ('{element.user_name}',{element.id_lodging},{element.rating},
                     '{element.comment}');
                 """
         self.base_controller.PostTableOneElement(query=query)
 
-prueba_review=ControllerReview()
-prueba_review.CreateTableReview()
+#prueba_review=ControllerReview()
+#prueba_review.CreateTableReview()
 #prueba_review.PostDataReview(data="DepoHunter_paradigmas/src/utils/sample_reviews.csv")
 #elemento_prueba=models.Review(id_review=90, user_name="pepito" ,id_lodging=2, rating=5, comment="beatiful")
 #prueba_review.PostTableUserOne(element=elemento_prueba)

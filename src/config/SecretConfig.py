@@ -1,5 +1,5 @@
-PGHOST='ep-green-credit-a8zf81xd-pooler.eastus2.azure.neon.tech'
+PGHOST='ep-super-smoke-a5082lrk-pooler.us-east-2.aws.neon.tech'
 PGDATABASE='neondb'
-PGUSER='neondb_owner'
-PGPASSWORD='npg_3sFk2nAbWLcS'
+PGUSER='awitadelulo'
+PGPASSWORD='xc6I0JTaNdsr'
 PGPORT=5432

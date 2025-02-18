@@ -39,16 +39,26 @@ def home():
    return render_template("home.html", alojamientos=alojamientos)
 
 
-@blueprint.route("/alojamiento/<int:id>")
+@blueprint.route("/alojamiento/<int:id>", methods=["GET", "POST"])
 def alojamiento_detalle(id):
-    comment=instance_controller_Result.filter_Review(id_lodging=id)
-    alojamientos=instance_controller_Result.filterdefault()
-    
+    if request.method == "POST":
+        comentario = request.form.get("comentario-post") 
+        calificacion = request.form.get("calificacion")
+        user_name=session.get("username")
+        element_comment=models.Review(id_review=None, user_name= user_name ,id_lodging=id, rating=int(calificacion), comment=comentario)
+        instance_controller_Review.PostTableUserOne(element=element_comment)
+        # Agrega aquí la lógica para almacenar el comentario en la BD
+
+    comment = instance_controller_Result.filter_Review(id_lodging=id)
+    alojamientos = instance_controller_Result.filterdefault()
+
     alojamiento = next((a for a in alojamientos if a["id"] == id), None)
     if alojamiento is None:
         return "Alojamiento no encontrado", 404
-    averange=models.Review.calculate_Start(comment)
-    return render_template("detail.html", alojamiento=alojamiento,comments=comment,averange=averange)
+
+    averange = models.Review.calculate_Start(comment)
+
+    return render_template("detail.html", alojamiento=alojamiento, comments=comment, averange=averange)
 
 @blueprint.route('/pago')
 def pago():
