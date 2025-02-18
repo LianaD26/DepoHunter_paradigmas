@@ -84,7 +84,7 @@ class ControllerResult():
 
                     LEFT JOIN host h ON l.id = h.id_lodging
                     LEFT JOIN image i ON l.id = i.id_lodging
-                    WHERE l.price = {price} """
+                    WHERE l.price <= {price} """
         query_result=self._execute_query(query)
         return dic_get(tuple=query_result,list_keys=general_keys)
     
@@ -102,6 +102,20 @@ class ControllerResult():
         query_result=self._execute_query(query)
         return dic_get(tuple=query_result,list_keys=general_keys)
     
+    def filterTypePrice(self, type_, price): 
+        query = f""" 
+            SELECT  l.id, l.name, l.city, l.price,
+                    l.type, l.capacity, l.rooms_number,
+                    l.bathrooms_number, l.bedrooms_number,
+                    h.host_name, i.addressone, i.addresstwo, i.addresstree
+                    FROM lodging l
+                    LEFT JOIN host h ON l.id = h.id_lodging
+                    LEFT JOIN image i ON l.id = i.id_lodging
+            WHERE l.price <={price} and l.type = '{type_}'"""
+
+        query_result = self._execute_query(query)
+        return dic_get(tuple=query_result, list_keys=general_keys)
+        
     def filterUser(self, name):
         query = f""" SELECT * FROM users 
                     WHERE name = '{name}'"""
@@ -118,9 +132,10 @@ class ControllerResult():
 
 
 # Ejemplo de uso
-#elementobusqueda = ControllerResult()
+elementobusqueda = ControllerResult()
+#print(elementobusqueda.filterTypePrice(type_="Apartamento",price=200))
 #print(elementobusqueda.filterdefault())
 #print(elementobusqueda.FilterCityDate(city="Bogotá", initial_date="2026-12-02", end_date="2029-12-02"))
-#print(elementobusqueda.Filterprice(price=120))
+#print(elementobusqueda.Filterprice(price=0))
 #print(elementobusqueda.filtertype(type="Casa"))
 #print(elementobusqueda.filter_Review(id_lodging=2))

@@ -58,30 +58,31 @@
 
     <!-- 🔹 Sección de Comentarios -->
     <div class="comentarios">
-        <h3 style="text-align: left;">Conoce la experiencia de otros usuarios</h3>
+        <h3 style="text-align: left;">Conoce la experiencia de otros usuarios:</h3>
 
-        <!-- Contenedor donde aparecerán los comentarios -->
+        <!-- Contenedor donde aparecerán los comentarios en 3 columnas -->
         <div class="lista-comentarios">
             {% for comentario in comments %}
-                <div class="comentario-card">
-                    <strong>{{ comentario.user_name}}</strong>:
-                    <div class="rating">
-                        {% for i in range(0, 5) %}
-                            {% if i < comentario.rating %}
-                                <span class="star filled">★</span>
-                            {% else %}
-                                <span class="star">☆</span>
-                            {% endif %}
-                        {% endfor %}
-                    </div>
-                    <p>{{ comentario.comment }}</p>
+            <div class="comentario-card">
+                <p class="name-user"><strong>{{ comentario.user_name }}</strong></p>
+                <div class="rating-comment">
+                    {% for i in range(0, 5) %}
+                        {% if i < comentario.rating %}
+                            <span class="star filled">★</span>
+                        {% else %}
+                            <span class="star">☆</span>
+                        {% endif %}
+                    {% endfor %}
                 </div>
+                <p class="comentario-texto">{{ comentario.comment }}</p>
+            </div>
             {% endfor %}
         </div>
 
         <textarea id="comentario-texto" placeholder="Escribe tu comentario..." rows="3"></textarea>
         <button class="btn-publicar" onclick="publicarComentario()"><strong>Publicar</strong></button>        
     </div>
+
 
     <div class="location">
         <div>

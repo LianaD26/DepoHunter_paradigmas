@@ -1,6 +1,5 @@
-from flask import Blueprint, render_template,  request, redirect, url_for, flash, request
+from flask import Blueprint, render_template,  request, redirect, url_for, flash, request, session
 import sys
-import os
 sys.path.append("src")
 import controller.Controller_host as Controller_host
 import controller.Controller_Image as Controller_Image
@@ -56,11 +55,19 @@ def pago():
    return render_template('pago.html')
 
 
-@blueprint.route("/login")
+@blueprint.route("/login", methods=["GET", "POST"])
 def login():
-   return render_template("login.html")
+    if request.method == "POST":
+        username = request.form.get("username")
+        if username: #aca se puede realizar validaciones 
+            session["username"] = username
+            return redirect(url_for("view_user.home"))  # Corrección de la redirección
+    return render_template("login.html")
 
-
+@blueprint.route("/logout") #enviandolo a esta ruta elimina al usuario
+def logout():
+    session.pop("username", None)  # Eliminamos el usuario de la sesión
+    return redirect(url_for("view_user.home"))  # Redirigir al login
 
 @blueprint.route("/register", methods=["GET", "POST"])
 def register():
@@ -124,3 +131,20 @@ def main_filter_lodgings():
     new_lodgings = instance_controller_Result.FilterCityDate(city, initial_date, end_date)
 
     return render_template("home.html", alojamientos=new_lodgings)
+
+@blueprint.route('/filters', methods=["GET", "POST"])
+def filters_lodgings():
+    # Obtener el tipo
+    tipo = request.form.get("tipo_")
+    # Obtener el precio max
+    precio_max = request.form.get("precio_max")
+    if tipo and precio_max:
+        precio_max = int(precio_max)
+        #filtro de las dos cosas
+        new_lodgings = instance_controller_Result.filterTypePrice(tipo, precio_max)
+    elif tipo:
+        new_lodgings = instance_controller_Result.filtertype(tipo)
+    elif precio_max:
+        precio_max = int(precio_max)
+        new_lodgings = instance_controller_Result.Filterprice(precio_max)
+    return render_template('home.html', alojamientos=new_lodgings)

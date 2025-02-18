@@ -86,9 +86,12 @@ a:visited{
 
 form .btn-filter-lodgings{
     height: auto; /* Asegura que no se expanda */
-    padding: 5px 10px; 
-    margin-top: 15px;
-    color: red;
+    padding: 6px 10px; 
+    margin-top: 12px;
+    color: white;
+    background-color: black;
+    border-radius: 20px;
+    font-size: 18px;
 }
 
 .navbar-secundario input:focus{
@@ -96,20 +99,68 @@ form .btn-filter-lodgings{
 }
 
 
-/* Contenido Principal */
-.contenido {
-    padding: 20px;
-    text-align: center;
-    margin: 20px;
+/*Columns for lodging*/
+/* Contenedor principal con dos columnas */
+.contenedor-principal {
+    margin-left: 30px;
+    margin-right: 30px;
+    display: grid;
+    grid-template-columns: 1fr 3fr; /* 1/4 filtros - 3/4 alojamientos */
+    gap: 20px;
     padding: 20px;
 }
+.intro{
+    margin-left: 52px;
+}
 
-/*Columns for lodging*/
+/* Columna de filtros */
+.filtros {
+    background: #f8f8f8;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.filtros label {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.filtros input, .filtros select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.btn-filtrar {
+    background-color: rgb(25 185 255);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+.btn-filtrar:hover {
+    background-color: #0056b3;
+}
+
+/* Columna de alojamientos */
+.alojamientos {
+    display: flex;
+    flex-direction: column;
+}
+
 .alojamientos-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr); /* 5 columnas */
-    gap: 20px; /* Espaciado entre tarjetas */
-    padding: 20px;
+    grid-template-columns: repeat(4, 1fr); /* 4 columnas */
+    gap: 15px;
 }
 
 .alojamiento-card {
@@ -132,6 +183,25 @@ form .btn-filter-lodgings{
     object-fit: cover;
     border-radius: 10px;
 }
+
+/* Diseño responsive */
+@media (max-width: 1000px) {
+    .contenedor-principal {
+        grid-template-columns: 1fr; /* En pantallas pequeñas, 1 sola columna */
+    }
+
+    .alojamientos-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas en pantallas medianas */
+    }
+}
+
+@media (max-width: 600px) {
+    .alojamientos-grid {
+        grid-template-columns: 1fr; /* 1 columna en móviles */
+    }
+}
+
+/*-----*/
 
 /*Alojamientos individuales*/
 .info-alojamiento{
@@ -297,30 +367,17 @@ input, select {
 .btn-pagar:hover {
     background-color: rgb(24, 184, 255);
 }
-/*Esto no sale todavía*/
-.mensaje {
-    text-align: center;
-    margin-top: 10px;
-    font-weight: bold;
-    color: green;
-}
-/*Calificación de los alojamientos*/
-.rating {
+
+/*Promedio de calificación de los alojamientos*/
+.rating{
     font-size: 40px;
     display: flex;
     justify-content: center;
     gap: 5px;
     cursor: pointer;
+    color: gold;
 }
 
-.star {
-    color: #ccc; /* Estrellas grises por defecto */
-    transition: color 0.3s;
-}
-
-.star.active {
-    color: gold; /* Estrellas doradas cuando están activas */
-}
 /*Estilo de comentarios*/
 .alerta {
     color: red;
@@ -329,20 +386,69 @@ input, select {
 .comentarios, .comunicacion-host{
     margin-top: 40px;
     padding: 20px;
-    background: #f9f9f9;
     border-radius: 10px;
     margin-left: 40px;
     margin-right: 40px;
 }
-.comentario-card{
+/* Estilo de las estrellas */
+.star {
+    font-size: 20px;
+    color: gray;
+}
+
+.star.filled {
+    color: gold;
+}
+.comentario-texto {
+    font-size: 14px;
+    color: #333;
+}
+
+/* Diseño responsive */
+@media (max-width: 900px) {
+    .lista-comentarios {
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas en pantallas medianas */
+    }
+}
+
+@media (max-width: 600px) {
+    .lista-comentarios {
+        grid-template-columns: 1fr; /* 1 columna en móviles */
+    }
+}
+/*........................................................................................*/
+.rating-comment {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
+    gap: 3px;
+    margin-bottom: 10px;
 }
-.location{
+
+.lista-comentarios {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Crea 3 columnas iguales */
+    gap: 15px; /* Espaciado entre las tarjetas */
     padding: 20px;
-    margin-left: 40px;
-    margin-right: 40px;
+    justify-content: center;
 }
+.comentario-card {
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.name-user {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/*........................................................................................*/
 .comentarios textarea, .comunicacion-host textarea {
     width: 100%;
     padding: 10px;
@@ -362,11 +468,6 @@ input, select {
     cursor: pointer;
     font-size: 15px;
 }
-
-.btn-login-user:hover, .btn-register-user:hover {
-    background-color: #0056b3;
-}
-
 .comentarios button:disabled {
     background: gray;
     cursor: not-allowed;
@@ -378,9 +479,15 @@ input, select {
     border-bottom: 1px solid #ddd;
     float: left;
 }
-/*Botón de publicar los comentarios*/
+/*Mensaje al host*/
 .btn-publicar, .btn-enviar-host{
     float: left;
+}
+/*Location(Map)*/
+.location{
+    padding: 20px;
+    margin-left: 40px;
+    margin-right: 40px;
 }
 
 /*Mis reservas---*/

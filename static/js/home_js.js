@@ -50,20 +50,6 @@ function procesarPago() {
         mensaje.innerText = "¡Pago realizado con éxito!";
     }, 2000);
 }
-function setRating(rating) {
-    const stars = document.querySelectorAll(".star");
-    stars.forEach(star => {
-        const value = parseInt(star.getAttribute("data-value"));
-        if (value <= rating) {
-            star.classList.add("active");
-        } else {
-            star.classList.remove("active");
-        }
-    });
-}
-
-// Esto se debe cambiar con el número promedio que obtenga de la BD
-setRating(3);
 
 // Lógica para colocar el mapa con la respectiva API
 document.addEventListener("DOMContentLoaded", function () {
