@@ -68,8 +68,11 @@ def pago(id):
     try:
         initial_date = request.form.get("fecha_inicio")
         end_date = request.form.get("fecha_fin")
-        
-        return render_template('pago.html', id=id, initial_date=initial_date, end_date=end_date)
+        user_name=session.get("username")
+        if user_name!=None:
+            return render_template('pago.html', id=id, initial_date=initial_date, end_date=end_date)
+        else:
+            return redirect(url_for('view_user.login'))
     
     except Exception as e:
         flash(f"Error: {str(e)}", "error")
