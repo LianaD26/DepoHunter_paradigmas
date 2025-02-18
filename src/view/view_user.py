@@ -24,6 +24,7 @@ instance_controller_Image.CreateTableImage()
 instance_controller_Lodging.CreateTableLodging()
 instance_controller_Reservation.CreateTableReservation()
 instance_controller_user.CreateTableUser()
+instance_controller_Review.CreateTableReview()
 
 instance_controller_host.PostDataHost(data="src/utils/host_data.csv")
 instance_controller_Image.PostDataImage(data="src/utils/urls.csv")
@@ -45,9 +46,11 @@ def alojamiento_detalle(id):
         comentario = request.form.get("comentario-post") 
         calificacion = request.form.get("calificacion")
         user_name=session.get("username")
-        element_comment=models.Review(id_review=None, user_name= user_name ,id_lodging=id, rating=int(calificacion), comment=comentario)
-        instance_controller_Review.PostTableUserOne(element=element_comment)
-        # Agrega aquí la lógica para almacenar el comentario en la BD
+        if user_name!=None:
+            element_comment=models.Review(id_review=None, user_name= user_name ,id_lodging=id, rating=int(calificacion), comment=comentario)
+            instance_controller_Review.PostTableUserOne(element=element_comment)
+        else: 
+            return redirect(url_for('view_user.login'))
 
     comment = instance_controller_Result.filter_Review(id_lodging=id)
     alojamientos = instance_controller_Result.filterdefault()
@@ -55,7 +58,6 @@ def alojamiento_detalle(id):
     alojamiento = next((a for a in alojamientos if a["id"] == id), None)
     if alojamiento is None:
         return "Alojamiento no encontrado", 404
-
     averange = models.Review.calculate_Start(comment)
 
     return render_template("detail.html", alojamiento=alojamiento, comments=comment, averange=averange)
