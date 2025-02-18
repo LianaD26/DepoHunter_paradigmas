@@ -59,11 +59,12 @@ class User: #usuario
 
 
 class Reservation:
-    def __init__(self, id_reservation, id_lodging, initial_date, end_date):
+    def __init__(self, id_reservation, id_lodging, initial_date, end_date, name):
         self.id_reservation = id_reservation
         self.id_lodging = id_lodging
         self.initial_date = initial_date
         self.end_date = end_date
+        self.name = name
 
 
 class Image:

@@ -16,12 +16,14 @@ class ControllerUser:
         self.base_controller=B_Controller.BaseController()
     
     def CreateTableUser(self):
-        query="""CREATE TABLE IF NOT EXISTS users(
-                name varchar(50) not null,
-                password varchar(50) not null
-                );"""
+        query = """
+        CREATE TABLE IF NOT EXISTS users (
+            name VARCHAR(50) PRIMARY KEY,
+            password VARCHAR(50) NOT NULL
+        );
+        """
         self.base_controller.CreateTable(query=query)
-    
+
     
     def PostTableUser(self,element):
         try:     

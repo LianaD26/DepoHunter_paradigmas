@@ -10,6 +10,7 @@ import config.SecretConfig as secretconfig
 import model.model_tables as models
 import controller.Base_Controller as B_Controller
 
+
 general_keys=[ "id" ,"name","city", "price", "type", "capacity", "rooms_number",
             "bathrooms_number", "bedrooms_number", "host_name","addressone",
             "addresstwo","addresstree"]
@@ -31,17 +32,28 @@ class ControllerResult():
     def __init__(self):
         self.base_controller = B_Controller.BaseController()
     
-    def _execute_query(self, query, fetch_method="fetchall"):
-        cursor = self.base_controller.connection.cursor()
-        cursor.execute(query)
-        
-        if fetch_method == "fetchone":
-            search = cursor.fetchone()
-        else:
-            search = cursor.fetchall()
+    def _execute_query(self, query, params=None, fetch_method="fetchall"):
+        connection = self.base_controller.connection
+        cursor = connection.cursor()
 
-        cursor.close()
-        return search
+        try:
+            cursor.execute(query, params)  # 👈 Usa params correctamente
+            connection.commit()  # 👈 Confirma la transacción si todo está bien
+
+            # 🔹 Si la consulta es un SELECT, intenta obtener resultados
+            if query.strip().lower().startswith("select"):
+                return cursor.fetchone() if fetch_method == "fetchone" else cursor.fetchall()
+            
+            return None  # 👈 Para consultas que no devuelven datos como DELETE, INSERT, UPDATE
+
+        except Exception as e:
+            connection.rollback()  # 👈 Revierte la transacción en caso de error
+            print(f"🔴 Error en _execute_query: {e}")
+            return None
+        finally:
+            cursor.close()
+
+
     
     def filterdefault(self):
         query = """select  l.id ,l.name,l.city, l.price,
@@ -129,23 +141,23 @@ class ControllerResult():
         query_result=self._execute_query(query)
         return dic_get(tuple=query_result,list_keys=Review_key)
     
-    def filter_reservas_proceso(self):
+    def filter_reservas_proceso(self, user_name):
         query = """
         SELECT id_reservation, id_lodging, initial_date, end_date 
         FROM reservation
-        WHERE end_date >= CURRENT_DATE;
+        WHERE end_date >= CURRENT_DATE AND name = %s;
         """
-        result = self._execute_query(query=query)
+        result = self._execute_query(query, (user_name,))  # 👈 Eliminado params=
         reservas_proceso = [{"id": row[0], "alojamiento": row[1], "fecha_inicio": row[2], "fecha_fin": row[3]} for row in result]
         return reservas_proceso
 
-    def filter_reservas_finalizadas(self):
+    def filter_reservas_finalizadas(self, user_name):
         query = """
         SELECT id_reservation, id_lodging, initial_date, end_date 
         FROM reservation
-        WHERE end_date < CURRENT_DATE;
+        WHERE end_date < CURRENT_DATE AND name = %s;
         """
-        result = self._execute_query(query=query)
+        result = self._execute_query(query, (user_name,))  # 👈 Eliminado params=
         reservas_finalizadas = [{"id": row[0], "alojamiento": row[1], "fecha_inicio": row[2], "fecha_fin": row[3]} for row in result]
         return reservas_finalizadas
 

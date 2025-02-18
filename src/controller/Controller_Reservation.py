@@ -8,33 +8,49 @@ sys.path.append("src")
 import config.SecretConfig as secretconfig
 import model.model_tables as models
 import controller.Base_Controller as B_Controller
+from src.controller.Controller_Result import ControllerResult
 
 
 class ControllerReservation:
     def __init__(self):
         self.base_controller = B_Controller.BaseController()
+        self.Controller_Result = ControllerResult()
 
     def CreateTableReservation(self):
         query = """
-        CREATE TABLE IF NOT EXISTS reservation( 
+        CREATE TABLE IF NOT EXISTS reservation (
             id_reservation SERIAL PRIMARY KEY,
             id_lodging INT NOT NULL,
             initial_date DATE NOT NULL,
-            end_date DATE NOT NULL
+            end_date DATE NOT NULL,
+            name VARCHAR(50) NOT NULL,
+            FOREIGN KEY (id_lodging) REFERENCES lodging(id) ON DELETE CASCADE,
+            FOREIGN KEY (name) REFERENCES users(name) ON DELETE CASCADE
         );
-        """
-        self.base_controller.CreateTable(query=query)
-
-    def PostTableReservation(self, element):
-        query = f"""
-        INSERT INTO reservation(id_lodging, initial_date, end_date)
-        VALUES({element.id_lodging}, '{element.initial_date}', '{element.end_date}');
         """
         self.base_controller.PostTableOneElement(query=query)
 
+
+    def PostTableReservation(self, element):
+        query = """
+        INSERT INTO reservation (id_lodging, initial_date, end_date, name)
+        VALUES (%s, %s, %s, %s);
+        """ % (element.id_lodging, f"'{element.initial_date}'", f"'{element.end_date}'", f"'{element.name}'")
+
+        try:
+            self.base_controller.PostTableOneElement(query=query)
+            print("✅ Reserva guardada con éxito.")
+        except Exception as e:
+            print(f"❌ Error al guardar la reserva: {e}")
+
     def CancelReservation(self, reserva_id):
-        query = f"DELETE FROM reservation WHERE id_reservation = {reserva_id};"
-        self.base_controller.ExecuteQuery(query=query)
+        query = "DELETE FROM reservation WHERE id_reservation = %s;"
+        try:
+            self.Controller_Result._execute_query(query, (reserva_id,))  # ✅ Pasar los parámetros correctamente
+            print(f"✅ Reserva {reserva_id} cancelada exitosamente.")
+        except Exception as e:
+            print(f"❌ Error cancelando la reserva: {e}")
+
     
     
 
