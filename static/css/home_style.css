@@ -62,11 +62,13 @@ a:visited{
     box-shadow: 2px 2px 10px rgb(0, 184, 255);
     border-radius: 20px;
     height: 40px;
-    width: 120px;
+    width: auto;
+    padding: 5px 10px;
     text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 .username-link {
     text-decoration: none; 
@@ -351,6 +353,7 @@ form .btn-filter-lodgings{
     text-align: center;
     margin-top: 20px;
     width: 250px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 /* Cambio de color en hover */
@@ -397,9 +400,10 @@ input, select {
     border: none;
     width: 100%;
     border-radius: 20px;
-    font-size: 16px;
+    font-size: 19px;
     cursor: pointer;
     transition: background 0.3s;
+    color: white;
 }
 .btn-pagar:hover {
     background-color: rgb(24, 184, 255);
