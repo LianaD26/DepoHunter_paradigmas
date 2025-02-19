@@ -113,9 +113,13 @@ def confirmar_pago(id):
 def login():
     if request.method == "POST":
         username = request.form.get("username")
-        if username: #aca se puede realizar validaciones 
-            session["username"] = username
-            return redirect(url_for("view_user.home"))  # Corrección de la redirección
+        if not username:
+            return render_template("login.html", error="El nombre de usuario es obligatorio.")
+        usuario_val = instance_controller_Result.filterUser(name=username)
+        if not usuario_val:  
+            return render_template("login.html", error="Usuario no encontrado.")
+        session["username"] = username
+        return redirect(url_for("view_user.home"))
     return render_template("login.html")
 
 @blueprint.route("/logout") #enviandolo a esta ruta elimina al usuario
